@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Manage Category</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card mode="ios">
+    <ion-row>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label position="stacked">Name</ion-label>
+          <ion-input type="text" placeholder="Category name" [(ngModel)]="category.name"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label position="stacked">TAT (in days)</ion-label>
+          <ion-input type="number" placeholder="Turn around time" [(ngModel)]="category.tat"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label position="stacked">Gender</ion-label>
+          <ion-select [(ngModel)]="category.gender">
+            <ion-select-option [value]="1">Male</ion-select-option>
+            <ion-select-option [value]="2">Female</ion-select-option>
+            <ion-select-option [value]="3">Both</ion-select-option>
+
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label position="stacked">Description</ion-label>
+          <ion-input type="text" placeholder="Description" [(ngModel)]="category.description"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="category.id">
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label position="stacked">Platform Commission (%)</ion-label>
+          <ion-input type="number" placeholder="Commission" [(ngModel)]="category.platformCommision"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label position="stacked">Affiliate Commission (%)</ion-label>
+          <ion-input type="number" placeholder="Commission" [(ngModel)]="category.affiliateCommision"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-button mode="ios" expand="full" class="ion-margin" (click)="alterCategory()">
+        {{category.id?"Edit Category":"Add Category"}}
+    </ion-button>
+    <p class="ion-padding-horizontal" *ngIf="!category.id" style="color: red;font-size:13px">
+
+        Note: Platform & Product commission can be added only after a top level category has been created
+   
+    </p>
+</ion-card>
+</ion-content>

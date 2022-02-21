@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-padding-horizontal">
+      Send SMR
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button slot="icon-only" (click)="controller.modalCtrl.dismiss();">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="row">
+    <div class="col-12 box-margin">
+      <div class="card">
+        <div class="card-body">
+          <div class="col-12 pr-1 pt-3">
+            <label class="form-label">Select Customer</label>
+            <ngx-select [items]="customers" #filter optionTextField="companyName" optionValueField="id"
+             placeholder="Customer"
+             (select)="addCustomer($event)"
+             ></ngx-select>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="col-12 pr-1 pt-3">
+            <ion-button mode="ios" color="primary" *ngFor="let data of selectedCustomers" class="ion-margin"
+            (click)="removeCustomer(data)"
+            >
+              {{data.companyName}}
+              <ion-icon name="close" slot="end"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer *ngIf="selectedCustomers.size>0">
+  <ion-toolbar color="primary" (click)="sendSMR()" class="ion-text-center">
+    Send SMR
+  </ion-toolbar>
+</ion-footer>

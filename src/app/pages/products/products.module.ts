@@ -1,0 +1,26 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { IonicModule } from '@ionic/angular';
+
+import { ProductsPageRoutingModule } from './products-routing.module';
+
+import { ProductsPage } from './products.page';
+import { HeaderModule } from 'src/app/components/header/header.module';
+import { FooterModule } from 'src/app/components/footer/footer.module';
+import { SideMenuModule } from 'src/app/components/side-menu/side-menu.module';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    HeaderModule,
+    FooterModule,
+    SideMenuModule,
+    ProductsPageRoutingModule
+  ],
+  declarations: [ProductsPage]
+})
+export class ProductsPageModule {}

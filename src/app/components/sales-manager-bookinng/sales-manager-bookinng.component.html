@@ -1,0 +1,49 @@
+<div class="col-lg-12 col-xl-12 height-card box-margin" style="padding:0px;">
+  <div class="card">
+    <div class="card-body">
+      <h3 class=" mb-2">Sales Manager's Performance</h3>
+      <div class="form-row">
+        <div class="form-group col-8 pt-3">
+          <label class="form-label">Date</label>
+          <input ngxDaterangepickerMd #datePicker class="form-control w-50" [(ngModel)]="selectedDate"
+            [showCustomRangeLabel]="true" [alwaysShowCalendars]="true" [ranges]="ranges"
+            [linkedCalendars]="true" [isInvalidDate]="isInvalidDate" [showClearButton]="true"
+            placeholder="Select date range" (change)="onDateChange()" />
+        </div>
+        <div class="col-4 pt-3">
+          <ion-button mode="ios" class="add-new mr-3 ion-float-right" (click)="resetFilter()">
+            <ion-icon name="close" slot="start"></ion-icon> Reset Filter
+          </ion-button>
+          <ion-button mode="ios" class="add-new mr-3 ion-float-right" (click)="applyFilter()">
+            <ion-icon name="funnel" slot="start"></ion-icon> Apply Filter
+          </ion-button>
+       
+        </div>
+      </div>
+
+      <table [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" datatable class="table w-100 nowrap">
+        <thead>
+          <tr>
+            <th *ngFor="let heading of headings;let col = index"
+            [ngClass]="col!=0?'text-center':''"
+
+            >{{heading}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of bookings;let i = index">
+
+            <td *ngFor="let item of data;let col = index" 
+            [ngClass]="col!=0?'text-center':''"
+            >{{item}}</td>
+        
+
+          </tr>
+
+        </tbody>
+      </table>
+
+
+    </div> <!-- end card body-->
+  </div> <!-- end card -->
+</div>

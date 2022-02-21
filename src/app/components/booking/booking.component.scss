@@ -1,0 +1,28 @@
+@import '../../../assets/css/default-assets/responsive.bootstrap4.css';
+@import '../../../assets/css/default-assets/select.bootstrap4.css';
+.add-new {
+    margin-top:14px;
+    --border-radius:5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.filter-wrapper {
+    padding-top:10px;
+    padding-bottom:10px;
+    .row {
+    width:100%;
+    }
+}
+.button-wrapper {
+    width: 100%;
+    display: inline-block;
+    text-align: right
+}
+.dataTables_info,.dataTables_empty {
+    display: none;
+}
+.no-btn-border {
+    width:182px;
+    font-size:14px;
+    --border-radius:2px;
+}

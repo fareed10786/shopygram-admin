@@ -1,0 +1,121 @@
+<ion-content>
+  <app-header></app-header>
+
+  <div class="wrapper">
+    <app-side-menu></app-side-menu>
+    <div id="content">
+      <div class="container-fluid">
+
+        <ion-card mode="ios" *ngIf="product.seller" class="ion-padding-vertical">
+          <ion-row>
+            <ion-col>
+              <ion-item lines="none">
+              <ion-avatar slot="start">
+                <ion-img [src]="product.seller.sellerImageUrl"></ion-img>
+              </ion-avatar>
+              <ion-label>{{product.seller.shopName}} (@{{product.seller.userName}})<br/>
+                <ion-text color="dark">
+                  <i>
+                    Last updated on {{((product.updated??product.created)*1000)|date:'fullDate'}} {{((product.updated??product.created)*1000)|date:'mediumTime'}}
+                </i>  
+                </ion-text>
+              </ion-label>
+              </ion-item>
+         
+            </ion-col>
+          </ion-row>
+
+
+
+
+
+
+          <h3>Product Details</h3>
+          <ion-row>
+            <ion-col>
+              <ion-item lines="none">
+                <ion-label position="stacked">Brand Name</ion-label>
+                <ion-input type="text" placeholder="Category name" [(ngModel)]="product.relatedInformation.name" readonly></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item lines="none">
+                <ion-label position="stacked">Style No</ion-label>
+                <ion-input type="text" placeholder="Category name" [(ngModel)]="product.relatedInformation.styleNo" readonly></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item lines="none">
+                <ion-label position="stacked">Category</ion-label>
+                <ion-input type="text" placeholder="Category name" [(ngModel)]="product.categories.path" readonly></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size="12">
+              <ion-item lines="none">
+                <ion-label position="stacked">Description</ion-label>
+                <ion-textarea  placeholder="Description" [(ngModel)]="product.description.value" readonly></ion-textarea>
+              </ion-item>
+            </ion-col>
+            </ion-row>
+      
+
+          <h3>Colors</h3>
+          <ion-row>
+            <ion-col *ngFor="let color of product.options.colors.items" size="3">
+              <ion-item lines="none">
+                <ion-input type="text" placeholder="Category name" [(ngModel)]="color.name" readonly></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <h3>Sizes</h3>
+          <ion-row>
+            <ion-col *ngFor="let size of product.options.sizes.items" size="3">
+              <ion-item lines="none">
+                <ion-input type="text" placeholder="Category name" [(ngModel)]="size.name" readonly></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+  
+          <ng-container *ngFor="let item of product.options.variants.items;let i = index">
+            <h3>Variant #{{i+1}}</h3>
+            <ion-row   >
+            <ion-col>
+              <ion-item lines="none">
+                <ion-label position="stacked">Color</ion-label>
+                <ion-input type="text" placeholder="Category name" [(ngModel)]=" product.options.colors.items[i].name" readonly></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item lines="none">
+                <ion-label position="stacked">MRP</ion-label>
+                <ion-input type="text" placeholder="Category name" [(ngModel)]="item.pricing.mrp" readonly></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item lines="none">
+                <ion-label position="stacked">Selling Price</ion-label>
+                <ion-input type="text" placeholder="Category name" [(ngModel)]="item.pricing.sellingPrice" readonly></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item lines="none">
+                <ion-label position="stacked">Transfer Price</ion-label>
+                <ion-input type="text" placeholder="Category name" [(ngModel)]="item.pricing.transferPrice" readonly></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="3" class="ion-padding-horizontal"
+            *ngFor="let img of item.assetSources"
+            >
+      
+                <ion-img [src]="img"></ion-img> <br/>
+          
+            </ion-col>
+          </ion-row>
+          </ng-container>
+      </ion-card>
+      </div>
+    </div>
+  </div>
+</ion-content>

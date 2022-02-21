@@ -1,0 +1,77 @@
+<ion-content>
+  <app-header></app-header>
+
+  <div class="wrapper">
+    <app-side-menu></app-side-menu>
+    <div id="content">
+      <div class="container-fluid">
+
+
+
+        <div class="form-row ">
+
+
+          <div class="col-12">
+            <ion-row>
+              <ion-col>
+                <h3> Sl. No</h3>
+              </ion-col>
+              <ion-col>
+                <h3>Order Id</h3>
+              </ion-col>
+              <ion-col>
+                <h3>Product Name</h3>
+              </ion-col>
+              <ion-col size="3">
+                <h3>Buyer Details</h3>
+              </ion-col>
+              <ion-col>
+                <h3>Total Amount</h3>
+              </ion-col>
+              <ion-col>
+                <h3>Current Status</h3>
+              </ion-col>
+              <!--    <ion-col>
+                <h3> Sub categories</h3>
+              </ion-col> -->
+
+
+            </ion-row>
+            <ng-container *ngFor="let data of orders;let i = index">
+              <ion-row *ngIf="data.productDetails.relatedInformation">
+                <ion-col class="cs-padding-top">
+                  #{{i+1}}
+                </ion-col>
+                <ion-col class="cs-padding-top">
+                  {{data.orderId}} <br />
+                  <span *ngIf="data.shipping">{{data.shipping.logistic_name}} <br />
+                    AWB: {{data.awbNumber??0}}</span>
+                </ion-col>
+                <ion-col class="cs-padding-top">
+                  {{data.productDetails.relatedInformation.name}} <br />
+                  Qty: {{data.pricing.quantity}}, Rs. {{data.pricing.sellingPrice}} <br />
+                  {{data.productDetails.sku}}
+                </ion-col>
+                <ion-col size="3" class="cs-padding-top">
+                  {{data.user.firstName}} {{data.user.lastName}} <br />
+                  {{data.delivery.road}} , {{data.delivery.flatNo}}, {{data.delivery.area}},
+                  {{data.delivery.city}}, {{data.delivery.pincode}}
+                </ion-col>
+                <ion-col class="cs-padding-top">
+                  {{data.pricing.totalAmount|number:'1.2-2'}}<br />
+                  Delivery: Rs.{{data.pricing.deliveryCharges??0}}
+                </ion-col>
+
+                <ion-col class="cs-padding-top">
+                  {{data.tracking[data.tracking.length-1].statusText}}<br/>
+                  <ion-button size="small" [routerLink]="['details',data.id]">View</ion-button>
+                </ion-col>
+
+              </ion-row>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

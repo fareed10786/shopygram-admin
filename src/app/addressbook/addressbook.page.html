@@ -1,0 +1,103 @@
+<ion-content class="sidebar-mini">
+    <!-- Preloader -->
+    <div id="preloader-area">
+      <div class="lds-ripple">
+          <div></div>
+          <div></div>
+      </div>
+  </div>
+
+  <!-- ======================================
+  ******* Main Page Wrapper **********
+  ======================================= -->
+
+  <div class="main-container-wrapper">
+    <app-header></app-header>
+
+    <div class="container-fluid page-body-wrapper">
+      <!-- Side Menu area -->
+
+
+      <!-- partial -->
+      <div class="main-panel"  id="main-panel">
+        <div class="content-wrapper">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                  <div class="card mb-30">
+                      <div class="card-body pb-0">
+                          <div class="d-flex justify-content-between align-items-center mb-20">
+                              <h3>Customers</h3>
+                              <ion-spinner style="right: 550px;position: absolute"
+                              *ngIf="showLoader"
+                              >
+
+                              </ion-spinner>
+                              <ion-searchbar style="width: 250px;position: absolute;right: 440px;"
+                              
+                              (ionChange)="setSearchQuery($event)"
+                              ></ion-searchbar>
+                              <select class="form-control" style="width:160px;position:absolute;right:280px;height:44px"
+                                [(ngModel)]="data.contactSegment"
+                                (change)="searchAddressBook()"
+                                [ngModelOptions]="{standalone: true}">
+                                <option selected disabled value>Select contact type</option>
+                                <option [value]="0">All</option>
+                                <option [value]="1">Importer</option>
+                                <option [value]="2">Exporter</option>
+                                <option [value]="3">Agent</option>
+                                <option [value]="4">Imporer & Exporter</option>
+        
+        
+                              </select>
+                              <button type="button" class="btn btn-primary waves-effect waves-light float-right mb-3" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-lg" (click)="openNewContact()" 
+                              style="margin-top:17px;position: absolute;right:126px"
+                              *ngIf="getRolePermissions('addressbook',1)"
+                              >+ New Contact</button>
+                              <button type="button" class="btn btn-primary waves-effect waves-light float-right mb-3" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-lg" 
+                              style="margin-top:17px;position: absolute;right:22px"
+                              *ngIf="getRolePermissions('addressbook',0)"
+                              (click)="exportAddressBook()"
+                              > Export </button>
+                            </div>
+                          <div class="table-responsive order-stats">
+                              <table class="table table-nowrap">
+                                  <thead>
+                                      <tr>
+                                        <th>Action</th>
+                                          <th>Company Name</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr *ngFor="let data of customerList">
+                                        <td>
+                                          <a [href]="'/new-contact/'+data.id" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
+                                          <span class="cursor-pointer" 
+                                          *ngIf="getRolePermissions('addressbook',3)"
+                                          (click)="confirmDeletion(data.id)">
+                                            <i class="fa fa-trash text-danger font-18"></i></span>
+                                      </td>
+                                          <td>
+                                              <span class="font-14">{{data.companyName}}</span>
+                                           
+                                          </td>
+                                      
+                                        
+                                      </tr>
+       
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+            
+
+          </div>
+        </div>
+        <app-footer></app-footer>
+      </div>
+    </div>
+  </div>
+</ion-content>

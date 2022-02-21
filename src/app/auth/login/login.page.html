@@ -1,0 +1,74 @@
+<ion-content class="login-area">
+    <!-- Preloader -->
+    <div id="preloader-area">
+      <div class="lds-ripple">
+          <div></div>
+          <div></div>
+      </div>
+  </div>
+
+  <div class="main-content- h-100vh">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center justify-content-center">
+
+        <div class="col-sm-10 col-md-8 col-lg-5">
+          <!-- Middle Box -->
+          <div class="middle-box">
+            <div class="card main-login">
+              <div class="card-body p-3">
+
+                <!-- Logo -->
+                <div class="container d-inline-block text-center">
+                </div>
+                <h4 class="font-24 m-0 mt-4">
+                  <strong>
+                    Log In.
+                  </strong>
+                </h4>
+              
+
+                <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+                  <div class="form-group">
+                    <input class="form-control login" type="email" id="emailaddress" required=""
+                      placeholder="Enter your email" formControlName="email">
+                  </div>
+
+                  <div class="form-group">
+                    <a href="/" class="text-dark float-right"></a>
+                    <input class="form-control login" type="password" required="" id="password"
+                      placeholder="Enter your password" formControlName="password">
+                  </div>
+
+
+                  <div class="form-group mb-0">
+                   
+                      <button class="btn btn-primary btn-block f-24" style="font-size: 18px;" type="submit"> Sign In </button>
+                   
+                  </div>
+
+                  <!--  -->
+              
+                </form>
+
+                <!-- end card -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================
+  ********* Page Wrapper Area End ***********
+  ======================================= -->
+
+  <!-- Plugins Js -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/bundle.js"></script>
+
+  <!-- Active JS -->
+  <script src="js/default-assets/active.js"></script>
+</ion-content>

@@ -1,0 +1,82 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-title class="ion-padding-horizontal">
+      Confirm & Email Booking
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="controller.modalCtrl.dismiss()">
+        <ion-icon name="close"></ion-icon> Close window
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding-vertical">
+  <form #form="ngForm" class="ion-margin">
+    <div class="container ">
+      <fieldset>
+        <div class="row class-spacing">
+          <div class="col-2 ion-text-center ion-padding-vertical">
+            To
+          </div>
+          <div class="col-8 set-border">
+            <tag-input [(ngModel)]="toEmails" [displayBy]="'label'" [identifyBy]="'label'" [theme]="'bootstrap'"
+              name="toEmails" placeholder="+ To" [separatorKeyCodes]="[32, 188]" secondaryPlaceholder="Type email and press enter"
+              [errorMessages]="errorMessages" [validators]="validators" [removable]="true">
+
+              <tag-input-dropdown [dynamicUpdate]="false" [zIndex]="10000" [displayBy]="'label'" [identifyBy]="'label'"
+                [showDropdownIfEmpty]="true" >
+
+                <ng-template let-item="item" let-index="index">
+                  {{ item.label }}
+                </ng-template>
+              </tag-input-dropdown>
+
+            </tag-input>
+            <p class="ion-padding-top">
+              <strong>Press Enter key after typing email id</strong>
+            </p>
+          </div>
+
+        </div>
+        <div class="row" *ngIf="showDateTime">
+          <div class="col-2 ion-text-center ion-padding-vertical"> <label>Select Date</label></div>
+          <div class="col-4">
+            
+            <ion-input id="date" type="date" class="cust-border" [(ngModel)]="updateDate" (ionChange)="setSubAndBody($event,'date')"></ion-input>
+          </div>
+            <div class="col-2 ion-text-center ion-padding-vertical"> <label>Select Time</label></div>
+            <div class="col-4">
+              <ion-input id="time" type="time"  class="cust-border" [(ngModel)]="updateTime" (ionChange)="setSubAndBody($event,'time')"></ion-input>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2 ion-text-center ion-padding-vertical"> <label>Subject</label></div>
+          <div class="col-8">
+            <input type="text" class="form-control" placeholder="Enter subject" required="true" name="subject"
+              [(ngModel)]="subject" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-2 ion-text-center ion-padding-vertical"> 
+            <label>Content</label>
+          </div>
+
+          <div class="col-md-8">
+            <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="body" [config]="config" name="body">
+            </angular-editor>
+          </div>
+        </div>
+
+      </fieldset>
+    </div>
+  </form>
+
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <button type="submit" class="btn btn-primary float-right mr-3" (click)="sendEmail()">
+      {{showDateTime?"Update Status":"Confirm Booking"}}</button>
+  </ion-toolbar>
+</ion-footer>
