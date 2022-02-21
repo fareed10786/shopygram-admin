@@ -27,7 +27,7 @@ export class CategoriesPage implements OnInit {
     })
   }
 
-  async openCrudModal(data:Category) {
+  async openCrudModal(data?:Category) {
     let def:Category = {
       parentId: '',
       name: '',
