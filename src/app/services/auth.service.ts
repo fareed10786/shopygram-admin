@@ -79,7 +79,7 @@ export class AuthService {
         console.log(this.response);
         this.bcrypt.storeAccessToken(this.response);
         this.controller.presentAlert("The user has been successfully logged in");
-        window.open("/categories", "_self");
+        window.open("/dashboard", "_self");
       });
   }
   /**
