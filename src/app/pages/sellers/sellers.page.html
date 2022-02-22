@@ -6,67 +6,59 @@
     <div id="content">
       <div class="container-fluid">
 
-        <h6 class="fts-18 mb-5"> Sellers
-
-
-        </h6>
 
 
         <div class="form-row ">
 
-          
+
           <div class="col-12">
-            <ion-row>
-              <ion-col>
-                <h3> Sl. No</h3>
-              </ion-col>
-              <ion-col>
-                <h3>Name</h3>
-              </ion-col>
-              <ion-col size="3">
-                <h3>Shop Name</h3>
-              </ion-col>
-        
-              <ion-col>
-                <h3>Pincode</h3>
-              </ion-col>
-              <ion-col>
-                <h3>City</h3>
-              </ion-col>
-           <!--    <ion-col>
-                <h3> Sub categories</h3>
-              </ion-col> -->
-              <ion-col>
-                <h3> Status</h3>
-              </ion-col>
-              <ion-col>
-                <h3> Action</h3>
-              </ion-col>
-            </ion-row>
-            <ion-row *ngFor="let data of sellers;let i = index">
-              <ion-col class="cs-padding-top">
-                #{{i+1}}
-              </ion-col>
-              <ion-col class="cs-padding-top">
-                {{data.basicInfo.userName}}
-              </ion-col>
-              <ion-col size="3" class="cs-padding-top">
-               {{data.basicInfo.shopName}}
-              </ion-col>
-        
-              <ion-col class="cs-padding-top">
-                {{data.basicInfo.city}}
-              </ion-col>
-              <ion-col class="cs-padding-top">
-                {{data.basicInfo.pincode}}
-              </ion-col>
-              <ion-col class="cs-padding-top">
-                {{data.basicInfo.status==1?"Approved":(data.basicInfo.status==-1?"Pending":"Rejected")}}
-              </ion-col>
-            <ion-col>
-              <ion-button (click)="openCrudModal(data)">View</ion-button>
-            </ion-col>
-            </ion-row>
+            <table [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" datatable class="table w-100 nowrap">
+              <thead>
+                <tr>
+
+                  <th> Sl. No</th>
+
+                  <th>Name</th>
+
+                  <th>Shop Name</th>
+
+                  <th>City</th>
+                  <th>Pincode</th>
+
+
+                  <th> Status</th>
+
+                  <th> Action</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of sellers;let i = index">
+                  <td class="cs-padding-top">
+                    #{{i+1}}
+                  </td>
+                  <td class="cs-padding-top">
+                    {{data.basicInfo.userName}}
+                  </td>
+                  <td class="cs-padding-top">
+                    {{data.basicInfo.shopName}}
+                  </td>
+
+                  <td class="cs-padding-top">
+                    {{data.basicInfo.city}}
+                  </td>
+                  <td class="cs-padding-top">
+                    {{data.basicInfo.pincode}}
+                  </td>
+                  <td class="cs-padding-top">
+                    {{data.basicInfo.status==1?"Approved":(data.basicInfo.status==-1?"Pending":"Rejected")}}
+                  </td>
+                  <td>
+                    <ion-button (click)="openCrudModal(data)">View</ion-button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

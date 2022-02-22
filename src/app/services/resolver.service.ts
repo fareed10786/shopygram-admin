@@ -333,7 +333,7 @@ export class ResolverService {
   }
 
   public getSubCategories() {
-    
+
   }
   /**
    * Category Manager Ends
@@ -412,5 +412,9 @@ export class ResolverService {
 
   public deactivateUser(id:number) {
     return this.http.patch(`${this.baseURL}/users/${id}/deactivate`,{});
+  }
+
+  public addSubAdmin(data:any){
+    return this.http.post(`${this.baseURL}/users/add`,data);
   }
 }

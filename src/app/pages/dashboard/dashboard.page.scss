@@ -1,0 +1,69 @@
+ion-buttons {
+    margin-bottom: 10px;
+    ion-button {
+        margin-left:5px;
+        ion-icon {
+            font-size:22px;
+        }
+    }
+}
+ion-content {
+    --background:#F7F7F7
+}
+ion-segment {
+    
+    --background:white;
+
+    ion-segment-button {
+        text-transform: capitalize;
+        --indicator-color:black;
+        --color-checked:black;
+        --indicator-height:3px;
+        font-weight: 700;
+        font-size: 16px;
+        border-top:0px;
+
+    }
+}
+.dashboard-btn {
+    ion-col {
+        padding-left:0px;
+        padding-right: 0px;
+        color:white;
+    }
+}
+.sold {
+    background:#9db7a5;
+    font-weight: 600;
+}
+.sales {
+    background:#b88675;
+
+}
+.btn {
+    width:98%;
+    height: 85px;padding: 15px;margin: 5px;
+    margin-top:1px;
+    margin-left:3px;
+    margin-right: 5px;
+    margin-bottom:1px;
+    font-weight: 600;
+}
+.monthly {
+    background:#A49391;
+}
+.annual {
+    background:#607B8E;
+}
+.stat-tbl {
+    background:white;
+    text-align: center;
+    ion-row{
+        border-bottom: solid lightgray 1px;
+        font-size:15px;
+    }
+}
+.count {
+    font-weight: bold;
+    font-size:20px;
+}

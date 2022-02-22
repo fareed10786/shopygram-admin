@@ -12,10 +12,11 @@ export class SideMenuComponent implements OnInit {
   currentPathIndex: number;
   paths: Array<string> = [
     "/dashboard",
-    "/bookings",
-    "/addressbook",
-    "/users/all",
-    "/track"
+    "/categories",
+    "/products",
+    "/orders",
+    "/sellers",
+    "/users"
   ]
   userData: any = {}
   role: any = {};

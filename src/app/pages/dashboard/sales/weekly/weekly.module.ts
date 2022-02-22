@@ -4,13 +4,12 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { UsersPageRoutingModule } from './users-routing.module';
+import { WeeklyPageRoutingModule } from './weekly-routing.module';
 
-import { UsersPage } from './users.page';
+import { WeeklyPage } from './weekly.page';
 import { HeaderModule } from 'src/app/components/header/header.module';
 import { FooterModule } from 'src/app/components/footer/footer.module';
 import { SideMenuModule } from 'src/app/components/side-menu/side-menu.module';
-import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   imports: [
@@ -20,9 +19,8 @@ import { DataTablesModule } from 'angular-datatables';
     HeaderModule,
     FooterModule,
     SideMenuModule,
-    DataTablesModule,
-    UsersPageRoutingModule
+    WeeklyPageRoutingModule
   ],
-  declarations: [UsersPage]
+  declarations: [WeeklyPage]
 })
-export class UsersPageModule {}
+export class WeeklyPageModule {}

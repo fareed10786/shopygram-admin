@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { DataTableDirective } from 'angular-datatables';
+import { Subject } from 'rxjs';
 import { Category } from 'src/app/interfaces/category';
 import { AuthService } from 'src/app/services/auth.service';
 import { ControllersService } from 'src/app/services/controllers.service';
@@ -15,6 +17,26 @@ export class CategoriesPage implements OnInit {
   
   categories:Array<Category>=[];
   category:Partial<Category>={};
+  dtOptions: DataTables.Settings = {
+    pagingType: 'full_numbers',
+    scrollX: true,
+    pageLength: 50,
+    dom: 'frtlp',
+    language: {
+      search: "Search :",
+      searchPlaceholder: "query",
+      paginate: {
+        next: '&#8594;', // or '→'
+        previous: '&#8592;', // or '←' 
+        first: '',
+        last: ''
+      },
+
+    }
+  };
+  dtTrigger: Subject<any> = new Subject<any>();
+  @ViewChild(DataTableDirective, { static: false })
+  dtElement: DataTableDirective;
   constructor(public auth:AuthService,public resolver:ResolverService,public controller:ControllersService) { }
 
   ngOnInit() {
@@ -24,6 +46,7 @@ export class CategoriesPage implements OnInit {
   public getAllCategories() {
     this.resolver.getAllCategories().subscribe((data:Category[])=>{
       this.categories = data;
+      this.dtTrigger.next()
     })
   }
 

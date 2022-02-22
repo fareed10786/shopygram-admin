@@ -5,8 +5,107 @@
     <app-side-menu></app-side-menu>
     <div id="content">
       <div class="container-fluid">
-  
-        <h6 class="fts-18 mb-3"> Track & Trace </h6>
+        <ion-grid class="dashboard-btn w-100">
+          <ion-row>
+            <ion-col>
+              <div class="btn sales">
+                <div>
+                  <span class="count"> &#8377;
+                    {{stats.today}}</span><br />
+                  Today's
+                </div>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div class="btn  sold" [routerLink]="['weekly']">
+                <div>
+                  <span class="count"> &#8377; {{stats.weekly}}
+                  </span>
+                  <br />
+      
+                  Weekly
+                </div>
+              </div>
+      
+            </ion-col>
+      
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div class="btn  monthly" [routerLink]="['monthly']">
+                <div>
+                  <span class="count">&#8377; {{stats.monthly}}</span>
+                  <br />
+                  Monthly
+                </div>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div class="btn  annual" [routerLink]="['annually']">
+                <div>
+                  <span class="count">&#8377; {{stats.annual}}</span>
+                  <br />
+      
+                  Annual
+                </div>
+              </div>
+      
+            </ion-col>
+      
+          </ion-row>
+        </ion-grid>
+        <ion-segment [(ngModel)]="selectedSegment">
+          <ion-segment-button [value]="1">
+            <ion-label>Sales</ion-label>
+          </ion-segment-button>
+          <ion-segment-button [value]="2">
+            <ion-label>Returns</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+        <ion-grid class="stat-tbl">
+          <ion-row>
+            <ion-col class="ion-padding-vertical">
+              <strong>Order#</strong>
+            </ion-col>
+            <ion-col class="ion-padding-vertical">
+              <strong>Date</strong>
+            </ion-col>
+            <ion-col class="ion-padding-vertical">
+              <strong>Earning</strong>
+            </ion-col>
+          </ion-row>
+          <ng-container *ngIf="sales && selectedSegment==1">
+            <ion-row *ngFor="let sale of sales">
+              <ion-col class="ion-padding-vertical">
+                <a [href]="'/orders/details/'+sale.id">{{sale.orderId}}</a>
+              </ion-col>
+              <ion-col class="ion-padding-vertical">
+                {{sale.created*1000 | date:'dd LLL YY'}}
+              </ion-col>
+              <ion-col class="ion-padding-vertical">
+                <strong>
+                  &#8377;{{ sale.pricing.transferPrice}}
+                </strong>
+              </ion-col>
+            </ion-row>
+          </ng-container>
+          <ng-container *ngIf="returns && selectedSegment==2">
+            <ion-row *ngFor="let sale of returns">
+              <ion-col class="ion-padding-vertical">
+                {{sale.orderId}}
+              </ion-col>
+              <ion-col class="ion-padding-vertical">
+                {{sale.created*1000 | date:'dd LLL YY'}}
+              </ion-col>
+              <ion-col class="ion-padding-vertical">
+                <strong>
+                  &#8377;{{sale.pricing.transferPrice}}
+                </strong>
+              </ion-col>
+            </ion-row>
+          </ng-container>
+        </ion-grid>
+      
       </div>
     </div>
   </div>

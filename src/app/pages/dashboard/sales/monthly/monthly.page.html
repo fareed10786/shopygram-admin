@@ -1,0 +1,66 @@
+<ion-content>
+  <app-header></app-header>
+
+  <div class="wrapper">
+    <app-side-menu></app-side-menu>
+    <div id="content">
+      <div class="container-fluid">
+        <ion-grid class="stat-tbl" style="margin-top:10px" *ngIf="selectedMonth==-1">
+
+          <ng-container *ngFor="let month of months;let i = index">
+            <ion-row *ngIf="monthSales[i]>0">
+              <ion-col class="ion-padding-vertical ion-text-left" (click)="goToMonthSale(i)">
+                {{month}}
+              </ion-col>
+              <ion-col class="ion-padding-vertical ion-text-right">
+                <strong>&#8377;{{monthSales[i]}}</strong>
+              </ion-col>
+      
+            </ion-row>
+          </ng-container>
+      
+        </ion-grid>
+        <ng-container *ngIf="selectedMonth!=-1">
+          <ion-row class="ion-margin ">
+            <ion-col class="ion-text-left">
+              Total Sale
+            </ion-col>
+            <ion-col class="ion-text-right" style="font-size: large;">
+              <strong>&#8377;{{monthSales[selectedMonth]}}</strong>
+            </ion-col>
+          </ion-row>
+          <ion-grid class="stat-tbl">
+            <ion-row>
+              <ion-col class="ion-padding-vertical">
+                <strong>Order#</strong>
+              </ion-col>
+              <ion-col class="ion-padding-vertical">
+                <strong>Date</strong>
+              </ion-col>
+              <ion-col class="ion-padding-vertical">
+                <strong>Earning</strong>
+              </ion-col>
+            </ion-row>
+            <ng-container >
+              <ion-row *ngFor="let sale of orders">
+                <ion-col class="ion-padding-vertical">
+                  <a [href]="'/seller/orders/detalis/'+sale.id">{{sale.orderId}}</a>
+                </ion-col>
+                <ion-col class="ion-padding-vertical">
+                  {{sale.created*1000 | date:'dd LLL YY'}}
+                </ion-col>
+                <ion-col class="ion-padding-vertical">
+                  <strong>
+                    &#8377;{{sale.pricing.transferPrice}}
+                  </strong>
+                </ion-col>
+              </ion-row>
+            </ng-container>
+      
+          </ion-grid>
+        </ng-container>
+      
+      </div>
+    </div>
+  </div>
+</ion-content>

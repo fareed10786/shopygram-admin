@@ -10,6 +10,7 @@ import { DashboardPage } from './dashboard.page';
 import { HeaderModule } from 'src/app/components/header/header.module';
 import { FooterModule } from 'src/app/components/footer/footer.module';
 import { SideMenuModule } from 'src/app/components/side-menu/side-menu.module';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { SideMenuModule } from 'src/app/components/side-menu/side-menu.module';
     HeaderModule,
     FooterModule,
     SideMenuModule,
+    DataTablesModule,
     DashboardPageRoutingModule
   ],
   declarations: [DashboardPage]
