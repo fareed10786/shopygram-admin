@@ -4,12 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PostsPageRoutingModule } from './posts-routing.module';
+import { DetailsPageRoutingModule } from './details-routing.module';
 
-import { PostsPage } from './posts.page';
-import { HeaderModule } from 'src/app/components/header/header.module';
-import { SideMenuModule } from 'src/app/components/side-menu/side-menu.module';
+import { DetailsPage } from './details.page';
 import { DataTablesModule } from 'angular-datatables';
+import { HeaderModule } from 'src/app/components/header/header.module';
+import { FooterModule } from 'src/app/components/footer/footer.module';
+import { SideMenuModule } from 'src/app/components/side-menu/side-menu.module';
 
 @NgModule({
   imports: [
@@ -17,10 +18,11 @@ import { DataTablesModule } from 'angular-datatables';
     FormsModule,
     IonicModule,
     HeaderModule,
+    FooterModule,
     SideMenuModule,
     DataTablesModule,
-    PostsPageRoutingModule
+    DetailsPageRoutingModule
   ],
-  declarations: [PostsPage]
+  declarations: [DetailsPage]
 })
-export class PostsPageModule {}
+export class DetailsPageModule {}
