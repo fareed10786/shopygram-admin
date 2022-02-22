@@ -394,7 +394,9 @@ export class ResolverService {
   public getReportedPosts() {
     return this.http.get(`${this.baseURL}/postreports`);
   }
-
+  public getReportedPostById(id:number) {
+    return this.http.get(`${this.baseURL}/postreports/${id}`);
+  }
   public getAllUsers() {
     return this.http.get(`${this.baseURL}/users`);
   }

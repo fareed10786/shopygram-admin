@@ -35,7 +35,7 @@
                   </td>
   
                   <td>
-                    <ion-button (click)="openCrudModal(data)" size="small">View</ion-button>
+                    <ion-button [routerLink]="['details',data.id]" size="small">View</ion-button>
                   </td>
                 </tr>
               </tbody>
