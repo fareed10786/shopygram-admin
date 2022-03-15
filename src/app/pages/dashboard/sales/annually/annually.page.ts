@@ -15,7 +15,7 @@ export class AnnuallyPage implements OnInit {
   response:Array<any>=[];
   startDate:Date = new Date();
   endDate:Date = new Date();
-  allowSaleStatuses:Array<any>=[7];
+  allowSaleStatuses:Array<any>=[1,2,3,4,5,7]
   yearSet:Set<number>=new Set();
   years:Array<number>=[];
   monthSales:Array<number>=[]

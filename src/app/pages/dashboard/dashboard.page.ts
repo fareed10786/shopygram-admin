@@ -25,7 +25,7 @@ export class DashboardPage implements OnInit {
   startDate:Date = new Date();
   endDate:Date = new Date();
   year:number = 31536000;
-  allowSaleStatuses:Array<any>=[7]
+  allowSaleStatuses:Array<any>=[1,2,3,4,5,7]
   allowReturnStatuses:Array<any>=[8,9]
   constructor(public resolver:ResolverService) {
 

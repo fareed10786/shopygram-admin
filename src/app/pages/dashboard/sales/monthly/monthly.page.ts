@@ -19,7 +19,7 @@ export class MonthlyPage implements OnInit,ViewWillEnter {
   response:Array<any>=[];
   startDate:Date = new Date();
   endDate:Date = new Date();
-  allowSaleStatuses:Array<any>=[7];
+  allowSaleStatuses:Array<any>=[1,2,3,4,5,7]
   months:Array<string>=["January","February","March","April","May","June","July","August","September","October","November","December"];
   monthSales:Array<number>=[]
   selectedMonth:number = -1;

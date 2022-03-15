@@ -16,7 +16,7 @@ export class WeeklyPage implements OnInit {
   response:Array<any>=[];
   startDate:Date = new Date();
   endDate:Date = new Date();
-  allowSaleStatuses:Array<any>=[7];
+  allowSaleStatuses:Array<any>=[1,2,3,4,5,7]
   weekSales:number = 0;
   selectedMonth:number = -1;
   orders:Array<any>=[]
