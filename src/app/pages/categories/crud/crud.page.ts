@@ -90,6 +90,8 @@ export class CrudPage implements OnInit {
         this.controller.modalCtrl.dismiss();
         this.controller.presentToast("The category has been successfully added");
         if(data.id && level==0){
+          this.newSecondLevelCategory.parentId = data.id;
+          this.newSecondLevelCategory.description = this.category.description
           this.category.id = data.id;
         }
         if(level!=0)
