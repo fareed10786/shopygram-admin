@@ -62,10 +62,11 @@
       </ion-col>
     </ion-row>
     <ion-button mode="ios" expand="full" class="ion-margin" (click)="alterCategory(category)" *ngIf="!category.id">
-        Edit Top Level Category
+      Add Top Level Category
+
     </ion-button>
     <ion-button mode="ios" expand="full" class="ion-margin" (click)="alterCategory(category,category.id)" *ngIf="category.id">
-      Add Top Level Category
+      Edit Top Level Category
   </ion-button>
 <!--     <p class="ion-padding-horizontal" *ngIf="!category.id" style="color: red;font-size:13px">
 
@@ -73,7 +74,7 @@
    
     </p> -->
 </ion-card>
-<ion-card mode="ios" >
+<ion-card mode="ios" *ngIf="category.id">
   <h3 class="ion-padding-horizontal">Second Level Categories</h3>
 
   <ion-row >
@@ -103,7 +104,7 @@
 
 
 </ion-card>
-<ion-card mode="ios">
+<ion-card mode="ios"  *ngIf="category.id && level==3">
   <h3 class="ion-padding-horizontal">Third Level Categories</h3>
 
   <ion-row>

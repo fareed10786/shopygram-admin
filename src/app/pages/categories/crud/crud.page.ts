@@ -55,6 +55,7 @@ export class CrudPage implements OnInit {
   id: string;
   subcategories: Array<any>=[];
   subsubcategories:Array<any>=[];
+  level:number = 0;
   constructor(private activatedRoute:ActivatedRoute,public auth:AuthService,public resolver:ResolverService,public controller:ControllersService) { 
     this.activatedRoute.queryParams.subscribe((data)=>{
       if(data.id){
@@ -105,6 +106,7 @@ export class CrudPage implements OnInit {
       this.newThirdLevelCategory.description = this.category.description
 
     }
+    this.level = level
     this.resolver.getSubCategories(id).subscribe((data:any)=>{
       if(level==2)
       this.subcategories = data;
