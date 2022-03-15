@@ -332,9 +332,7 @@ export class ResolverService {
 
   }
 
-  public getSubCategories() {
 
-  }
   /**
    * Category Manager Ends
    */
@@ -419,4 +417,9 @@ export class ResolverService {
   public addSubAdmin(data:any){
     return this.http.post(`${this.baseURL}/users/add`,data);
   }
+
+  public getSubCategories(id: string) {
+    return this.http.get(`${this.baseURL}/categories/${id}/subcategories`)
+  }
+
 }

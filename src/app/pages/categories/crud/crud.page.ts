@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Category } from 'src/app/interfaces/category';
 import { AuthService } from 'src/app/services/auth.service';
 import { ControllersService } from 'src/app/services/controllers.service';
@@ -25,7 +26,43 @@ export class CrudPage implements OnInit {
       image: ''
     }
   }
-  constructor(public auth:AuthService,public resolver:ResolverService,public controller:ControllersService) { }
+  newSecondLevelCategory:Category = {
+    parentId: '',
+    name: '',
+    description: '',
+    assets: {
+      icon: '',
+      image: ''
+    },
+    affiliateCommision: 0,
+    platformCommision: 0,
+    gender: 0,
+    tat: 0
+  }
+  newThirdLevelCategory:Category = {
+    parentId: '',
+    name: '',
+    description: '',
+    assets: {
+      icon: '',
+      image: ''
+    },
+    affiliateCommision: 0,
+    platformCommision: 0,
+    gender: 0,
+    tat: 0
+  }
+  id: string;
+  subcategories: Array<any>=[];
+  subsubcategories:Array<any>=[];
+  constructor(private activatedRoute:ActivatedRoute,public auth:AuthService,public resolver:ResolverService,public controller:ControllersService) { 
+    this.activatedRoute.queryParams.subscribe((data)=>{
+      if(data.id){
+        this.id = data.id;
+        this.getCategoryById();
+      }
+    })
+  }
 
   ngOnInit() {
   }
@@ -39,17 +76,48 @@ export class CrudPage implements OnInit {
       
     })
   } 
-  public alterCategory() {
+  public alterCategory(category:Category,id?:string,level:number = 0) {
     this.controller.presentLoading("Updating category...");
-    if(this.category.id){
+    if(id){
       this.addAffiliateCommission();
       this.addPlatformCommission();
-
+ 
     }
-    let endpoint = this.category.id?this.resolver.updateCategory(this.category.id,this.category):this.resolver.addCategory(this.category);
-    endpoint.subscribe((data)=>{
+    let endpoint = id?this.resolver.updateCategory(id,category):this.resolver.addCategory(category);
+    endpoint.subscribe((data:any)=>{
         this.controller.loadCtrl.dismiss();
         this.controller.modalCtrl.dismiss();
+        this.controller.presentToast("The category has been successfully added");
+        if(data.id && level==0){
+          this.category.id = data.id;
+        }
+        if(level!=0)
+        this.getSubCategories(category.parentId,level);
+
     })
   }
+  public getSubCategories(id:string,level:number = 2) {
+    if(level==2){
+    this.newSecondLevelCategory.parentId = id;
+    this.newSecondLevelCategory.description = this.category.description
+    }if(level==3) {
+      this.newThirdLevelCategory.parentId = id;
+      this.newThirdLevelCategory.description = this.category.description
+
+    }
+    this.resolver.getSubCategories(id).subscribe((data:any)=>{
+      if(level==2)
+      this.subcategories = data;
+      if(level==3)
+      this.subsubcategories = data
+    });
+  }
+  
+  public getCategoryById() {
+    this.resolver.getCategoryById(this.id).subscribe((data:Category)=>{
+      this.category = data;
+      this.getSubCategories(this.id);
+    })
+  }
+
 }

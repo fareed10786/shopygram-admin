@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
 import { Category } from 'src/app/interfaces/category';
@@ -37,7 +38,7 @@ export class CategoriesPage implements OnInit {
   dtTrigger: Subject<any> = new Subject<any>();
   @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective;
-  constructor(public auth:AuthService,public resolver:ResolverService,public controller:ControllersService) { }
+  constructor(private router:Router,public auth:AuthService,public resolver:ResolverService,public controller:ControllersService) { }
 
   ngOnInit() {
     this.getAllCategories();
@@ -50,6 +51,14 @@ export class CategoriesPage implements OnInit {
     })
   }
 
+  goToCategory(data?:Category){
+    if(!data)
+    this.router.navigate(['/categories/crud']);
+    else {
+      this.router.navigate(['/categories/crud'],{queryParams:{id:data.id}});
+
+    }
+  }
   async openCrudModal(data?:Category) {
     let def:Category = {
       parentId: '',
