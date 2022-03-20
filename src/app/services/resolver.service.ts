@@ -10,7 +10,6 @@ import { AuthService } from './auth.service';
 export class ResolverService {
 
 
-
   baseURL: string = environment.apiURL
   constructor(private http: HttpClient,public auth:AuthService) { }
 
@@ -422,4 +421,24 @@ export class ResolverService {
     return this.http.get(`${this.baseURL}/categories/${id}/subcategories`)
   }
 
+  public getAllSizes() {
+    return this.http.get(`${this.baseURL}/sizes`);
+  }
+  public getAllSizeBundles() {
+    return this.http.get(`${this.baseURL}/bundles`);
+  }
+
+  public addSize(data:any) {
+    return this.http.post(`${this.baseURL}/sizes`,data);
+  }
+  public addBundle(data:any) {
+    return this.http.post(`${this.baseURL}/bundles`,data);
+  }
+
+  public activateSize(id:string,size:any = {}) {
+    return this.http.patch(`${this.baseURL}/sizes/${id}/activate`,size);
+  }
+  public deactivateSize(id:string,size:any ={}) {
+    return this.http.patch(`${this.baseURL}/sizes/${id}/deactivate`,size);
+  }
 }

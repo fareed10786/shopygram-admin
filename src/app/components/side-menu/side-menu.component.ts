@@ -17,6 +17,8 @@ export class SideMenuComponent implements OnInit {
     "/orders",
     "/sellers",
     "/users",
+    "/sizes",
+    "/brand",
     "/posts"
   ]
   userData: any = {}

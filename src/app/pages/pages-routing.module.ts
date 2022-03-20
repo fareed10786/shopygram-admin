@@ -7,6 +7,14 @@ const routes: Routes = [
   {
     path: '',
     component: PagesPage
+  },
+  {
+    path: 'sizes',
+    loadChildren: () => import('./sizes/sizes.module').then( m => m.SizesPageModule)
+  },
+  {
+    path: 'brand',
+    loadChildren: () => import('./brand/brand.module').then( m => m.BrandPageModule)
   }
 ];
 

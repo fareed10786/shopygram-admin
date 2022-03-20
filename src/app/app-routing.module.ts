@@ -76,6 +76,10 @@ const routes: Routes = [
     path: 'pages',
     loadChildren: () => import('./pages/pages.module').then( m => m.PagesPageModule)
   },
+  {
+    path: 'sizes',
+    loadChildren: () => import('./pages/sizes/sizes.module').then( m => m.SizesPageModule)
+  },
 ];
 
 @NgModule({

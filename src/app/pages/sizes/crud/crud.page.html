@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add {{type==1?"Size":"Bundle"}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card mode="ios">
+    <ion-card-content *ngIf="type==2">
+      <ion-item lines="none">
+        <ion-label position="stacked">Bundle Name</ion-label>
+        <ion-input type="text" placeholder="Bundle name" [(ngModel)]="name"></ion-input>
+      </ion-item>
+      <div class="ion-padding-horizontal">
+        <div class="size" (click)="toggleSelection(size.id)" [ngClass]="isSizePresent(size.id)?'selected':''"
+          *ngFor="let size of sizes">
+          {{size.name}}
+        </div>
+      </div>
+    </ion-card-content>
+    <ion-card-content *ngIf="type==1">
+      <ion-item lines="none">
+        <ion-label position="stacked">Size name</ion-label>
+        <ion-input type="text" placeholder="Size name" [(ngModel)]="name"></ion-input>
+      </ion-item>
+    
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-footer *ngIf="type==2">
+  <ion-toolbar color="primary" class="ion-text-center" (click)="createBundle()">
+    Create Bundle
+  </ion-toolbar>
+</ion-footer>
+<ion-footer *ngIf="type==1">
+  <ion-toolbar color="primary" class="ion-text-center" (click)="createSize()">
+    Create Size
+  </ion-toolbar>
+</ion-footer>
