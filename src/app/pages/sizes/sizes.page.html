@@ -52,10 +52,10 @@
                     {{(data.updated??data.created)*1000 | date:'shortDate' }}
                   </td>
                   <td *ngIf="data.status==2 ">
-                    <ion-button (click)="approveSize(data.id)" size="small">Approve</ion-button>
+                    <ion-button (click)="approveSize(data)" size="small">Approve</ion-button>
                   </td>
                   <td *ngIf="data.status!=2" >
-                    <ion-toggle [checked]="data.status==0?false:true"(ionChange)="onStatusChange(data.id,$event)"></ion-toggle>
+                    <ion-toggle [checked]="data.status==0?false:true"(ionChange)="onStatusChange(data,$event)"></ion-toggle>
                   </td>
               
                 </tr>

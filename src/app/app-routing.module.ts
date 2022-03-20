@@ -80,6 +80,10 @@ const routes: Routes = [
     path: 'sizes',
     loadChildren: () => import('./pages/sizes/sizes.module').then( m => m.SizesPageModule)
   },
+  {
+    path: 'brands',
+    loadChildren: () => import('./pages/brand/brand.module').then( m => m.BrandPageModule)
+  },
 ];
 
 @NgModule({

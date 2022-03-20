@@ -10,6 +10,7 @@ import { AuthService } from './auth.service';
 export class ResolverService {
 
 
+
   baseURL: string = environment.apiURL
   constructor(private http: HttpClient,public auth:AuthService) { }
 
@@ -445,4 +446,21 @@ export class ResolverService {
   public deactivateSize(id:string,size:any ={}) {
     return this.http.patch(`${this.baseURL}/sizes/${id}/deactivate`,size);
   }
+
+  public getAllBrands() {
+    return this.http.get(`${this.baseURL}/brands`);
+
+  }
+  public addBrand(data) {
+    return this.http.post(`${this.baseURL}/brands`,data);
+
+  }
+  public activateBrand(id: string) {
+    return this.http.patch(`${this.baseURL}/brands/${id}/approve`,{});
+
+  }
+  public deactivateBrand(id: string) {
+    return this.http.patch(`${this.baseURL}/brands/${id}/deactivate`,{});
+  }
+  
 }
