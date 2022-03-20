@@ -6,17 +6,17 @@
     <div id="content">
       <div class="container-fluid">
 
-        <ion-card mode="ios" *ngIf="order.shipping || order.seller" class="ion-padding-vertical">
+        <ion-card mode="ios" *ngIf="post.shipping || post.seller" class="ion-padding-vertical">
           <ion-row>
             <ion-col>
               <ion-item lines="none">
               <ion-avatar slot="start">
-                <ion-img [src]="order.seller.sellerImageUrl"></ion-img>
+                <ion-img [src]="post.seller.sellerImageUrl"></ion-img>
               </ion-avatar>
-              <ion-label>{{order.seller.shopName}} (@{{order.seller.userName}})<br/>
+              <ion-label>{{post.seller.shopName}} (@{{post.seller.userName}})<br/>
                 <ion-text color="dark">
                   <i>
-                    Order received on {{(order.created*1000)|date:'fullDate'}} {{(order.created*1000)|date:'mediumTime'}}
+                    Order received on {{(post.created*1000)|date:'fullDate'}} {{(post.created*1000)|date:'mediumTime'}}
                 </i>  
                 </ion-text>
               </ion-label>
@@ -25,31 +25,31 @@
             </ion-col>
           </ion-row>
           <h3>Order Details     (<ion-text color="primary" size="medium">Current status: 
-            <strong>{{order.tracking[order.tracking.length-1].statusText}}</strong>
+            <strong>{{post.tracking[post.tracking.length-1].statusText}}</strong>
           </ion-text>)</h3>
           <ion-row>
             <ion-col>
               <ion-item lines="none">
                 <ion-label position="stacked">Order Id</ion-label>
-                <ion-input type="text" placeholder="Category name" [(ngModel)]="order.orderId" readonly></ion-input>
+                <ion-input type="text" placeholder="Category name" [(ngModel)]="post.postId" readonly></ion-input>
               </ion-item>
             </ion-col>
             <ion-col>
               <ion-item lines="none">
                 <ion-label position="stacked">Logistic Partner</ion-label>
-                <ion-input type="text" placeholder="Logistic Partner" [(ngModel)]="order.shipping.logistic_name" readonly></ion-input>
+                <ion-input type="text" placeholder="Logistic Partner" [(ngModel)]="post.shipping.logistic_name" readonly></ion-input>
               </ion-item>
             </ion-col>
             <ion-col>
               <ion-item lines="none">
                 <ion-label position="stacked">AWB #</ion-label>
-                <ion-input type="text" placeholder="AWB" [(ngModel)]="order.awbNumber" readonly></ion-input>
+                <ion-input type="text" placeholder="AWB" [(ngModel)]="post.awbNumber" readonly></ion-input>
               </ion-item>
             </ion-col>
             <ion-col>
               <ion-item lines="none">
                 <ion-label position="stacked">Total Amount</ion-label>
-                <ion-input type="text" placeholder="Category name" [(ngModel)]="order.pricing.totalAmount" readonly></ion-input>
+                <ion-input type="text" placeholder="Category name" [(ngModel)]="post.pricing.totalAmount" readonly></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -58,56 +58,56 @@
             <ion-col>
               <ion-item lines="none">
                 <ion-label position="stacked">Delivery Charges</ion-label>
-                <ion-input type="text" placeholder="Category name" [(ngModel)]="order.pricing.deliveryCharges" readonly></ion-input>
+                <ion-input type="text" placeholder="Category name" [(ngModel)]="post.pricing.deliveryCharges" readonly></ion-input>
               </ion-item>
             </ion-col>
             <ion-col>
               <ion-item lines="none">
                 <ion-label position="stacked">Total Quantity</ion-label>
-                <ion-input type="text" placeholder="Category name" [(ngModel)]="order.productDetails.quantity" readonly></ion-input>
+                <ion-input type="text" placeholder="Category name" [(ngModel)]="post.productDetails.quantity" readonly></ion-input>
               </ion-item>
             </ion-col>
             <ion-col>
               <ion-item lines="none">
                 <ion-label position="stacked">Transfer Price</ion-label>
-                <ion-input type="text" placeholder="Category name" [(ngModel)]="order.pricing.transferPrice" readonly></ion-input>
+                <ion-input type="text" placeholder="Category name" [(ngModel)]="post.pricing.transferPrice" readonly></ion-input>
               </ion-item>
             </ion-col>
         
             <ion-col>
               <ion-item lines="none">
                 <ion-label position="stacked">MRP</ion-label>
-                <ion-input type="text" placeholder="Category name" [(ngModel)]="order.pricing.mrp" readonly></ion-input>
+                <ion-input type="text" placeholder="Category name" [(ngModel)]="post.pricing.mrp" readonly></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
 
 
 
-          <h3>Product Details <ion-button fill="clear" [routerLink]="['/products/details',order.productDetails.id]" size="small">View Product</ion-button></h3>
+          <h3>Product Details <ion-button fill="clear" [routerLink]="['/products/details',post.productDetails.id]" size="small">View Product</ion-button></h3>
           <ion-row>
             <ion-col>
               <ion-item lines="none">
                 <ion-label position="stacked">Brand Name</ion-label>
-                <ion-input type="text" placeholder="Category name" [(ngModel)]="order.productDetails.relatedInformation.name" readonly></ion-input>
+                <ion-input type="text" placeholder="Category name" [(ngModel)]="post.productDetails.relatedInformation.name" readonly></ion-input>
               </ion-item>
             </ion-col>
             <ion-col>
               <ion-item lines="none">
                 <ion-label position="stacked">SKU</ion-label>
-                <ion-input type="text" placeholder="Category name" [(ngModel)]="order.productDetails.sku" readonly></ion-input>
+                <ion-input type="text" placeholder="Category name" [(ngModel)]="post.productDetails.sku" readonly></ion-input>
               </ion-item>
             </ion-col>
             <ion-col>
               <ion-item lines="none">
                 <ion-label position="stacked">Style No</ion-label>
-                <ion-input type="text" placeholder="Category name" [(ngModel)]="order.productDetails.relatedInformation.styleNo" readonly></ion-input>
+                <ion-input type="text" placeholder="Category name" [(ngModel)]="post.productDetails.relatedInformation.styleNo" readonly></ion-input>
               </ion-item>
             </ion-col>
             <ion-col>
               <ion-item lines="none">
                 <ion-label position="stacked">Color</ion-label>
-                <ion-input type="text" placeholder="Category name" [(ngModel)]="order.productDetails.options.available.color.name" readonly></ion-input>
+                <ion-input type="text" placeholder="Category name" [(ngModel)]="post.productDetails.options.available.color.name" readonly></ion-input>
               </ion-item>
             </ion-col>
      
@@ -116,19 +116,19 @@
               <ion-col>
                 <ion-item lines="none">
                   <ion-label position="stacked">Size</ion-label>
-                  <ion-input type="text" placeholder="Category name" [(ngModel)]="order.productDetails.options.available.sizes.items[0].name" readonly></ion-input>
+                  <ion-input type="text" placeholder="Category name" [(ngModel)]="post.productDetails.options.available.sizes.items[0].name" readonly></ion-input>
                 </ion-item>
               </ion-col>
             <ion-col>
               <ion-item lines="none">
                 <ion-label position="stacked">MRP</ion-label>
-                <ion-input type="text" placeholder="Category name" [(ngModel)]="order.pricing.mrp" readonly></ion-input>
+                <ion-input type="text" placeholder="Category name" [(ngModel)]="post.pricing.mrp" readonly></ion-input>
               </ion-item>
               </ion-col>
               <ion-col>
               <ion-item lines="none">
                 <ion-label position="stacked">Selling Price</ion-label>
-                <ion-input type="text" placeholder="Category name" [(ngModel)]="order.pricing.sellingPrice" readonly></ion-input>
+                <ion-input type="text" placeholder="Category name" [(ngModel)]="post.pricing.sellingPrice" readonly></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -138,27 +138,27 @@
             <ion-col>
               <ion-item lines="none">
                 <ion-label position="stacked">Payment Method</ion-label>
-                <ion-input type="text" placeholder="Category name" [(ngModel)]="order.payment.paymentType" readonly></ion-input>
+                <ion-input type="text" placeholder="Category name" [(ngModel)]="post.payment.paymentType" readonly></ion-input>
               </ion-item>
             </ion-col>
      
             <ion-col>
               <ion-item lines="none">
                 <ion-label position="stacked">Buyer First Name</ion-label>
-                <ion-input type="text" placeholder="Category name" [(ngModel)]="order.user.firstName" readonly></ion-input>
+                <ion-input type="text" placeholder="Category name" [(ngModel)]="post.user.firstName" readonly></ion-input>
               </ion-item>
             </ion-col>
         
             <ion-col>
               <ion-item lines="none">
                 <ion-label position="stacked">Buyer Last Name</ion-label>
-                <ion-input type="text" placeholder="Category name"  [(ngModel)]="order.user.lastName" readonly></ion-input>
+                <ion-input type="text" placeholder="Category name"  [(ngModel)]="post.user.lastName" readonly></ion-input>
               </ion-item>
             </ion-col>
           <ion-col>
             <ion-item lines="none">
               <ion-label position="stacked">Buyer username</ion-label>
-              <ion-input type="text" placeholder="Category name"  [(ngModel)]="order.user.userName" readonly></ion-input>
+              <ion-input type="text" placeholder="Category name"  [(ngModel)]="post.user.userName" readonly></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -166,26 +166,26 @@
           <ion-col>
             <ion-item lines="none">
               <ion-label position="stacked">State</ion-label>
-              <ion-input type="text" placeholder="Category name" [(ngModel)]="order.delivery.stateName" readonly></ion-input>
+              <ion-input type="text" placeholder="Category name" [(ngModel)]="post.delivery.stateName" readonly></ion-input>
             </ion-item>
           </ion-col>
    
           <ion-col>
             <ion-item lines="none">
               <ion-label position="stacked">City</ion-label>
-              <ion-input type="text" placeholder="Category name" [(ngModel)]="order.delivery.city" readonly></ion-input>
+              <ion-input type="text" placeholder="Category name" [(ngModel)]="post.delivery.city" readonly></ion-input>
             </ion-item>
           </ion-col>
           <ion-col>
             <ion-item lines="none">
               <ion-label position="stacked">Area</ion-label>
-              <ion-input type="text" placeholder="Category name" [(ngModel)]="order.delivery.area" readonly></ion-input>
+              <ion-input type="text" placeholder="Category name" [(ngModel)]="post.delivery.area" readonly></ion-input>
             </ion-item>
           </ion-col>
           <ion-col>
             <ion-item lines="none">
               <ion-label position="stacked">Flat No</ion-label>
-              <ion-input type="text" placeholder="Category name"  [(ngModel)]="order.delivery.flatNo" readonly></ion-input>
+              <ion-input type="text" placeholder="Category name"  [(ngModel)]="post.delivery.flatNo" readonly></ion-input>
             </ion-item>
           </ion-col>
           </ion-row>
@@ -193,19 +193,19 @@
         <ion-col>
           <ion-item lines="none">
             <ion-label position="stacked">Road</ion-label>
-            <ion-input type="text" placeholder="Category name"  [(ngModel)]="order.delivery.road" readonly></ion-input>
+            <ion-input type="text" placeholder="Category name"  [(ngModel)]="post.delivery.road" readonly></ion-input>
           </ion-item>
         </ion-col>
         <ion-col>
           <ion-item lines="none">
             <ion-label position="stacked">Pincode</ion-label>
-            <ion-input type="text" placeholder="Category name"  [(ngModel)]="order.delivery.pincode" readonly></ion-input>
+            <ion-input type="text" placeholder="Category name"  [(ngModel)]="post.delivery.pincode" readonly></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
       <h3>Tracking Details</h3>
       <ion-row>
-        <ion-col *ngFor="let data of order.tracking" size="4">
+        <ion-col *ngFor="let data of post.tracking" size="4">
           <ion-item lines="none">
             <ion-label position="stacked">At {{(data.timestamp*1000)|date}} {{(data.timestamp*1000)|date:'mediumTime'}}</ion-label>
             <ion-input type="text" placeholder="Category name"  [value]="data.statusText" readonly></ion-input>
