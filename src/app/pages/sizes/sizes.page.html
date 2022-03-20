@@ -26,15 +26,17 @@
               <option [value]="2">Show Approved Sizes</option>
               <option [value]="3">Show Bundles</option>
             </select>
-            <table [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" datatable class="table w-100 nowrap">
+            <table [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" datatable class="table w-100 nowrap"
+            *ngIf="segment!=3"
+            >
               <thead>
                 <tr>
 
                   <th> Sl. No</th>
                   <th>Name</th>
-                  <th>Updated</th>
+                  <th >Updated</th>
                   <th>Status</th>
-                  <th>Action</th>
+     
 
                 </tr>
               </thead>
@@ -49,15 +51,44 @@
                   <td class="cs-padding-top">
                     {{(data.updated??data.created)*1000 | date:'shortDate' }}
                   </td>
-                  <td *ngIf="data.status==2">
+                  <td *ngIf="data.status==2 ">
                     <ion-button (click)="approveSize(data.id)" size="small">Approve</ion-button>
                   </td>
-                  <td *ngIf="data.status!=2">
+                  <td *ngIf="data.status!=2" >
                     <ion-toggle [checked]="data.status==0?false:true"(ionChange)="onStatusChange(data.id,$event)"></ion-toggle>
                   </td>
-                  <td>
-                    <ion-button (click)=" goToSize(data)" size="small">Edit</ion-button>
+              
+                </tr>
+              </tbody>
+            </table>
+            <table [dtOptions]="dtOptions" [dtTrigger]="dtTriggerB" datatable class="table w-100 nowrap"
+            *ngIf="segment==3"
+
+            >
+              <thead>
+                <tr>
+
+                  <th> Sl. No</th>
+                  <th>Name</th>
+                  <th>Status</th>
+     
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of results;let i = index">
+                  <td class="cs-padding-top">
+                    #{{i+1}}
                   </td>
+                  <td class="cs-padding-top">
+                    {{data.name}}
+                  </td>
+      
+       
+                  <td  >
+                  <ion-button (click)="goToBundle(2,data)">Edit</ion-button>
+                  </td>
+              
                 </tr>
               </tbody>
             </table>

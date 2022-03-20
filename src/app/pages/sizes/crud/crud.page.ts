@@ -11,6 +11,7 @@ export class CrudPage implements OnInit {
 
   @Input() type:number = 1;
   @Input() sizes:Array<any>=[];
+  @Input() bundle:any;
   selectedSizes:Set<any>=new Set();
   name:string = "";
 
@@ -19,6 +20,12 @@ export class CrudPage implements OnInit {
    }
 
   ngOnInit() {
+    if(this.bundle){
+      this.name = this.bundle.name;
+      this.bundle.sizes.forEach(element => {
+      this.toggleSelection(element.id);    
+      });
+   }
   }
 
   public toggleSelection(id:string) {

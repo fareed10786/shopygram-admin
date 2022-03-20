@@ -34,6 +34,8 @@ export class SizesPage implements OnInit {
     }
   };
   dtTrigger: Subject<any> = new Subject<any>();
+  dtTriggerB: Subject<any> = new Subject<any>();
+
   segment: number = 2;
   results: Array<any> = [];
   bundles: Array<any> = [];
@@ -67,10 +69,9 @@ export class SizesPage implements OnInit {
     this.resolver.getAllSizeBundles().subscribe((data: any[]) => {
       this.controller.loadCtrl.dismiss();
       this.results = data;
-      if(this.bundles.length){
-        this.rerender();
-      }else {
-        this.dtTrigger.next()
+      if(!this.bundles.length){
+    
+        this.dtTriggerB.next()
       }
       this.bundles = data;
 
@@ -104,7 +105,8 @@ export class SizesPage implements OnInit {
       cssClass: 'my-custom-class',
       componentProps: {
         type:type,
-        sizes:this.sizes
+        sizes:this.sizes,
+        bundle:data
       }
     });
     modal.onDidDismiss().then((data) => {
@@ -143,8 +145,10 @@ export class SizesPage implements OnInit {
       this.controller.loadCtrl.dismiss();
     })
   }
-  public onSegmentSelection(event) {
+  public onSegmentSelection(event?) {
     if (this.segment == 1) {
+      this.results = []
+
       this.results = this.sizes.filter((item)=>item.status==2);
     }
     if (this.segment == 2) {

@@ -434,6 +434,10 @@ export class ResolverService {
   public addBundle(data:any) {
     return this.http.post(`${this.baseURL}/bundles`,data);
   }
+  updateBundle(bundle: any) {
+    return this.http.patch(`${this.baseURL}/bundles/${bundle.id}`,bundle);
+
+  }
 
   public activateSize(id:string,size:any = {}) {
     return this.http.patch(`${this.baseURL}/sizes/${id}/activate`,size);
