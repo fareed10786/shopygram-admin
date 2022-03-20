@@ -17,16 +17,6 @@ const routes: Routes = [
     loadChildren: () => import('./auth/login/login.module').then( m => m.LoginPageModule)
   },
 
-
-
-  {
-    path: 'bookings/:bid',
-    loadChildren: () => import('./booking/booking.module').then( m => m.BookingPageModule)
-  },
-  {
-    path: 'addressbook',
-    loadChildren: () => import('./addressbook/addressbook.module').then( m => m.AddressbookPageModule)
-  },
   {
     path: 'orders',
     loadChildren: () => import('./pages/orders/orders.module').then( m => m.OrdersPageModule)
@@ -83,6 +73,10 @@ const routes: Routes = [
   {
     path: 'brands',
     loadChildren: () => import('./pages/brand/brand.module').then( m => m.BrandPageModule)
+  },
+  {
+    path: 'payment',
+    loadChildren: () => import('./pages/payment/payment.module').then( m => m.PaymentPageModule)
   },
 ];
 

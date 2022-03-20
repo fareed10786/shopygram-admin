@@ -14,9 +14,7 @@ import { AuthInterceptor } from './services/auth.intercepter';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { ContactModule } from './components/contact/contact.module';
 import { EmailModule } from './components/email/email.module';
-import { SmrModule } from './components/smr/smr.module';
 Chart.register(BarController, LineController, PieController, LineElement, BarElement, PointElement,ArcElement, Title, Tooltip, Legend, CategoryScale, LinearScale)
 @NgModule({
   declarations: [AppComponent],
@@ -25,9 +23,7 @@ Chart.register(BarController, LineController, PieController, LineElement, BarEle
      MatButtonModule, 
      MatSelectModule,
      MatFormFieldModule,
-     ContactModule,
      EmailModule,
-     SmrModule,
      AppRoutingModule],
   providers: [{
     provide: HTTP_INTERCEPTORS,

@@ -1,9 +1,58 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>payment</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <app-header></app-header>
 
+  <div class="wrapper">
+    <app-side-menu></app-side-menu>
+    <div id="content">
+      <div class="container-fluid">
+
+
+
+        <div class="form-row ">
+
+
+          <div class="col-12">
+            <table [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" datatable class="table w-100 nowrap">
+              <thead>
+                <tr>
+                 <th> Sl. No</th>
+                  <th>Name</th>
+                  <th>Shop Name</th>
+                  <th>City</th>
+                  <th>Pincode</th>
+                  <th> Payment Received</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container  *ngFor="let data of sellers;let i = index">
+                <tr *ngIf="data.earningFromSeller>0">
+                  <td class="cs-padding-top">
+                    #{{i+1}}
+                  </td>
+                  <td class="cs-padding-top">
+                    {{data.basicInfo.userName}}
+                  </td>
+                  <td class="cs-padding-top">
+                    {{data.basicInfo.shopName}}
+                  </td>
+
+                  <td class="cs-padding-top">
+                    {{data.basicInfo.city}}
+                  </td>
+                  <td class="cs-padding-top">
+                    {{data.basicInfo.pincode}}
+                  </td>
+                  <td class="cs-padding-top">
+                    &#8377; {{data.earningFromSeller}}
+                  </td>
+                  
+                </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>
