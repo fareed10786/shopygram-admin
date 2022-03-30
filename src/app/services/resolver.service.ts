@@ -8,6 +8,10 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class ResolverService {
+  public uploadFile(purpose: number, data: any) {
+    return this.http.post(`${this.baseURL}/files/${purpose}`, data);
+  }
+
   inviteUser(user: any) {
     return this.http.post(`${this.baseURL}/invitation`,user);
   }
@@ -465,5 +469,31 @@ export class ResolverService {
   public deactivateBrand(id: string) {
     return this.http.patch(`${this.baseURL}/brands/${id}/deactivate`,{});
   }
-  
+
+  /**
+   * 
+   * @param post 
+   * @returns 
+   */
+  public addFeaturedPost(post:any) {
+    return this.http.post(`${this.baseURL}/featuredposts`,post);
+  }
+
+  /**
+   * 
+   * @param post 
+   * @returns 
+   */
+  public updateFeaturedPost(post:any) {
+    return this.http.patch(`${this.baseURL}/featuredposts`,post);
+  }
+
+  /**
+   * 
+   * @param post 
+   * @returns 
+   */
+  public getFeaturedPosts() {
+    return this.http.get(`${this.baseURL}/featuredposts`);
+  }
 }

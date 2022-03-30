@@ -1,0 +1,71 @@
+<ion-content>
+  <app-header></app-header>
+
+  <div class="wrapper">
+    
+    <div id="content">
+      <div class="container-fluid">
+
+
+
+        <div class="form-row ">
+
+
+          <div class="col-12">
+<ion-card mode="ios" style="margin-top:0px">
+  <h3 class="ion-padding-horizontal">Post Details</h3>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item lines="none">
+          <ion-label position="stacked">Caption</ion-label>
+          <ion-input type="text" placeholder="Post Caption" [(ngModel)]="post.caption"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col >
+        <ion-item lines="none">
+          <ion-label position="stacked">Link</ion-label>
+          <ion-input type="url" placeholder="Link" [(ngModel)]="post.link"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label position="stacked">View Criteria</ion-label>
+          <ion-input type="number" placeholder="View Criteria"  [(ngModel)]="post.viewCriteria"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+  
+
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label position="stacked">Click Criteria</ion-label>
+          <ion-input type="number" placeholder="Click criteria"  [(ngModel)]="post.clickCriteria"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col style="padding-top: 45px;">
+        <input type="file" accept="image/*" multiple="true" (change)="uploadFile($event)">
+      </ion-col>
+    </ion-row>
+
+    <ion-button mode="ios" expand="full" class="ion-margin" (click)="createFeaturedPost()"
+    [disabled]="!post.clickCriteria || !post.viewCriteria"
+    >
+      {{post.id?"Update":"Add"}} featured post
+
+    </ion-button>
+
+<!--     <p class="ion-padding-horizontal" *ngIf="!category.id" style="color: red;font-size:13px">
+
+        Note: Platform & Product commission can be added only after a top level category has been created
+   
+    </p> -->
+</ion-card>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</ion-content>

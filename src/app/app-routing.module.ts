@@ -43,6 +43,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/posts/posts.module').then( m => m.PostsPageModule)
   },
   {
+    path: 'featured',
+    loadChildren: () => import('./pages/posts/featured/featured.module').then( m => m.FeaturedPageModule)
+  },
+  {
     path: 'posts/details/:id',
     loadChildren: () => import('./pages/posts/details/details.module').then( m => m.DetailsPageModule)
   },

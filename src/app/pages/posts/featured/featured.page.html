@@ -1,0 +1,63 @@
+<ion-content>
+  <app-header></app-header>
+
+  <div class="wrapper">
+    <app-side-menu></app-side-menu>
+    <div id="content">
+      <div class="container-fluid">
+
+
+
+        <div class="form-row ">
+
+
+          <div class="col-12">
+            <ion-button class="ion-float-right" mode="ios" (click)="openCrudModal()">
+              <ion-icon name="add" slot="start"></ion-icon>
+              Create Featured Post
+          </ion-button>
+            <table [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" datatable class="table w-100 nowrap">
+              <thead>
+                <tr>
+
+   
+                  <th>Post Id</th>
+                  <th  colspan="1">Caption</th>
+                  <td>
+                    Views
+                  </td>
+                  <td >
+                    Clicks
+                  </td>
+                  <th> Action</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of posts;let i = index">
+       
+                  <td class="cs-padding-top">
+                    {{data.id}}
+                  </td>
+  
+                  <td class="cs-padding-top" colspan="1" class="ion-text-wrap">
+                    {{data.caption}}
+                  </td>
+                  <td class="cs-padding-top" colspan="1" class="ion-text-wrap">
+                    {{data.totalView??0}}
+                  </td>     
+                  <td class="cs-padding-top" colspan="1" class="ion-text-wrap">
+                    {{data.totalClick??0}}
+                  </td>
+                  <td>
+                    <ion-button (click)="openCrudModal(data)" size="small">View</ion-button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
