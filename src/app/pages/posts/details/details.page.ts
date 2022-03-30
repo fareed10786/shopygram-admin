@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ControllersService } from 'src/app/services/controllers.service';
 import { ResolverService } from 'src/app/services/resolver.service';
 
@@ -12,7 +12,8 @@ export class DetailsPage implements OnInit {
 
   post:any={};
   postId:number = 0;
-  constructor(private activatedRoute:ActivatedRoute,public controller:ControllersService,public resolver:ResolverService) { 
+  response:any={};
+  constructor(private router:Router,private activatedRoute:ActivatedRoute,public controller:ControllersService,public resolver:ResolverService) { 
     this.postId = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
   }
 
@@ -21,7 +22,15 @@ export class DetailsPage implements OnInit {
   }
   public getPostDetails() {
     this.resolver.getReportedPostById(this.postId).subscribe((data:any)=>{
-      this.post = data;
+      this.response = data;
+      this.post = data
+      console.log(this.post)
+    })
+  }
+  public removePost() {
+    this.controller.presentLoading("Removing post...")  ;
+    this.resolver.removePost(this.post.id).subscribe((data:any)=>{
+      this.router.navigate(['/posts']);
     })
   }
 

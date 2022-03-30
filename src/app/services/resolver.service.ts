@@ -8,6 +8,9 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class ResolverService {
+  removePost(postId:number) {
+    return this.http.delete(`${this.baseURL}/posts/${postId}`);
+  }
   public uploadFile(purpose: number, data: any) {
     return this.http.post(`${this.baseURL}/files/${purpose}`, data);
   }
@@ -400,7 +403,7 @@ export class ResolverService {
     return this.http.get(`${this.baseURL}/postreports`);
   }
   public getReportedPostById(id:number) {
-    return this.http.get(`${this.baseURL}/postreports/${id}`);
+    return this.http.get(`${this.baseURL}/posts/${id}`);
   }
   public getAllUsers(data:any={}) {
     return this.http.get(`${this.baseURL}/users?filter=${JSON.stringify(data)}`);
