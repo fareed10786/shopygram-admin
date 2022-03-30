@@ -35,6 +35,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/users/users.module').then( m => m.UsersPageModule)
   },
   {
+    path: 'users/admin',
+    loadChildren: () => import('./pages/sub-admin/sub-admin.module').then( m => m.SubAdminPageModule)
+  },
+  {
     path: 'posts',
     loadChildren: () => import('./pages/posts/posts.module').then( m => m.PostsPageModule)
   },

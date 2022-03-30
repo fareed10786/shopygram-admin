@@ -20,7 +20,8 @@ export class SideMenuComponent implements OnInit {
     "/sizes",
     "/brands",
     "/payment",
-    "/posts"
+    "/posts",
+    "/users/admin"
   ]
   userData: any = {}
   role: any = {};

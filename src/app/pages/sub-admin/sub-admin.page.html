@@ -1,0 +1,69 @@
+<ion-content>
+  <app-header></app-header>
+
+  <div class="wrapper">
+      <app-side-menu></app-side-menu>
+      <div id="content">
+          <div class="container-fluid">
+              <div class="form-row ">
+
+                  <div class="col-12">
+                      <ion-button class="ion-float-right" mode="ios" (click)="openCrudModal()">
+                          <ion-icon name="add" slot="start"></ion-icon>
+                          Add Sub admin
+                      </ion-button>
+                      <table [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" datatable class="table w-100 nowrap">
+                          <thead>
+                              <tr>
+
+                                  <th> Sl. No</th>
+
+                            
+
+                                  <th>Email</th>
+
+                                  <th>Phone number</th>
+
+
+                                  <th> Status</th>
+
+                                  <th> Action</th>
+
+                              </tr>
+                          </thead>
+                          <tbody>
+
+                              <ng-container *ngFor="let data of users.reverse();let i = index">
+                                  <tr *ngIf="data.email">
+                                      <td class="cs-padding-top">
+                                          #{{i+1}}
+                                      </td>
+                               
+                                      <td class="cs-padding-top">
+                                          {{data.email}}
+                                      </td>
+                               
+
+                                      <td class="cs-padding-top">
+                                          {{data.phoneNo}}
+                                      </td>
+
+                                      <td class="cs-padding-top">
+                                          {{data.status?"Active":"Inactive"}}
+                                      </td>
+                                      <td>
+                                          <ion-button 
+                                          size="small" (click)="changeStatus(data)"
+                                          >Change status</ion-button>
+                                      </td>
+                                  </tr>
+                              </ng-container>
+                          </tbody>
+                      </table>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</ion-content>

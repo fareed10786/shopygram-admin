@@ -398,8 +398,8 @@ export class ResolverService {
   public getReportedPostById(id:number) {
     return this.http.get(`${this.baseURL}/postreports/${id}`);
   }
-  public getAllUsers() {
-    return this.http.get(`${this.baseURL}/users`);
+  public getAllUsers(data:any={}) {
+    return this.http.get(`${this.baseURL}/users?filter=${JSON.stringify(data)}`);
   }
 
   public getUserById(id:number) {
