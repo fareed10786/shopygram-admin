@@ -47,6 +47,20 @@
         </ion-item>
       </ion-col>
     </ion-row>
+    <ion-row >
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label position="stacked">Cancel Penalty</ion-label>
+          <ion-input type="number" placeholder="Cancel Penalty" [(ngModel)]="category.misc.penalty.cancel"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label position="stacked">TAT Penalty</ion-label>
+          <ion-input type="number" placeholder="TAT Penalty" [(ngModel)]="category.misc.penalty.tat"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
     <ion-row *ngIf="category.id">
       <ion-col>
         <ion-item lines="none">

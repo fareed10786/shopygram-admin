@@ -40,6 +40,7 @@
     "crypto-js": "^4.1.1",
     "datatables.net": "^1.11.4",
     "datatables.net-dt": "^1.11.4",
+    "export-from-json": "^1.6.0",
     "ionic-selectable": "^4.8.0",
     "jquery": "^3.6.0",
     "moment": "^2.29.1",

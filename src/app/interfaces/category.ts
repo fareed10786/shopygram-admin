@@ -14,5 +14,11 @@ export interface Category {
     hasSubcategories?: number,
     status?: number,
     created?: number,
+    misc?:{
+      penalty:{
+        cancel:number,
+        tat:number,
+      }
+    },
     updated?: number
 }
