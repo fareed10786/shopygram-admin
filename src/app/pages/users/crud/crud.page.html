@@ -1,0 +1,60 @@
+<ion-content>
+  <app-header></app-header>
+
+  <div class="wrapper">
+    <div id="content">
+      <div class="container-fluid">
+
+
+
+        <div class="form-row ">
+
+
+          <div class="col-12">
+<ion-card mode="ios">
+  <h3 class="ion-padding-horizontal">User Details</h3>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label position="stacked">First Name</ion-label>
+          <ion-input type="text" placeholder="First Name" [(ngModel)]="user.firstName"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label position="stacked">Last Name</ion-label>
+          <ion-input type="text" placeholder="Last name" [(ngModel)]="user.lastName"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input type="email" placeholder="Enter user email address"  [(ngModel)]="user.email"></ion-input>
+        </ion-item>
+      </ion-col>
+  
+    </ion-row>
+
+    <ion-button mode="ios" expand="full" class="ion-margin" (click)="inviteUser()"
+    [disabled]="!user.email"
+    >
+      Invite User
+
+    </ion-button>
+
+<!--     <p class="ion-padding-horizontal" *ngIf="!category.id" style="color: red;font-size:13px">
+
+        Note: Platform & Product commission can be added only after a top level category has been created
+   
+    </p> -->
+</ion-card>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</ion-content>

@@ -8,6 +8,9 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class ResolverService {
+  inviteUser(user: any) {
+    return this.http.post(`${this.baseURL}/invitation`,user);
+  }
 
 
 

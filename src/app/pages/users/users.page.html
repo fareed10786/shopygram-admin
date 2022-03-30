@@ -8,6 +8,10 @@
                 <div class="form-row ">
 
                     <div class="col-12">
+                        <ion-button class="ion-float-right" mode="ios" (click)="openCrudModal()">
+                            <ion-icon name="add" slot="start"></ion-icon>
+                            Invite user
+                        </ion-button>
                         <table [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" datatable class="table w-100 nowrap">
                             <thead>
                                 <tr>

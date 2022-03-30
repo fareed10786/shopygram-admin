@@ -9,8 +9,8 @@ const routes: Routes = [
     component: UsersPage
   },
   {
-    path: 'details',
-    loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
+    path: 'crud',
+    loadChildren: () => import('./crud/crud.module').then( m => m.CrudPageModule)
   }
 ];
 

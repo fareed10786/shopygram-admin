@@ -59,13 +59,15 @@ export class PaymentPage implements OnInit {
       this.sellers.forEach((item)=>{
         let data = this.sales.filter((sale)=>sale.sellerId==item.basicInfo.id );
         let total = 0;
+        let earning = 0;
         if(data.length) {
           console.log(item.id)
           data.forEach(element => {
             total+= (element.pricing.quantity??1) * (element.pricing.transferPrice); 
-
+            earning += (element.pricing.quantity??1)*(element.pricing.sellingPrice - (element.pricing.transferPrice));
           });
         }
+        item.earning = earning;
         item.earningFromSeller = total.toFixed(2);
       })
       this.returns = returns;

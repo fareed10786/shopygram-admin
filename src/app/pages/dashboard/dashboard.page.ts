@@ -85,7 +85,8 @@ export class DashboardPage implements OnInit {
 
   public downloadReport() {
     let result = [];
-    this.sales.forEach((item)=>{
+    let sales = this.selectedSegment==2?this.returns:this.sales;
+    sales.forEach((item)=>{
       let sale = {
         "Order ID": item.orderId,
         "Sale Date": new Date(item.created*1000).toDateString(),

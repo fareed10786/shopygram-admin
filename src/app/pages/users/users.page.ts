@@ -3,6 +3,7 @@ import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
 import { ControllersService } from 'src/app/services/controllers.service';
 import { ResolverService } from 'src/app/services/resolver.service';
+import { CrudPage } from './crud/crud.page';
 
 @Component({
   selector: 'app-users',
@@ -61,5 +62,15 @@ export class UsersPage implements OnInit {
 
       })
     }
+  }
+  async openCrudModal() {
+
+    const modal = await this.controller.modalCtrl.create({
+      component: CrudPage,
+      cssClass: 'my-custom-class',
+ 
+    });
+
+    return await modal.present();
   }
 }

@@ -24,6 +24,12 @@ export class CrudPage implements OnInit {
     assets: {
       icon: '',
       image: ''
+    },
+    misc:{
+      penalty:{
+        tat:0,
+        cancel:0
+      }
     }
   }
   newSecondLevelCategory:Category = {
@@ -120,6 +126,15 @@ export class CrudPage implements OnInit {
   public getCategoryById() {
     this.resolver.getCategoryById(this.id).subscribe((data:Category)=>{
       this.category = data;
+      if(!this.category.misc){
+        this.category.misc = {
+          penalty:{
+            cancel:0,
+            tat:0
+          }
+        }
+
+      }
       this.getSubCategories(this.id);
     })
   }
