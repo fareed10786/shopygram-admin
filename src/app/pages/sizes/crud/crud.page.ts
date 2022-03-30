@@ -39,14 +39,17 @@ export class CrudPage implements OnInit {
     return this.selectedSizes.has(id);
   }
   public createBundle() {
-    let bundle = {
-      sizes:[],
+    console.log(this.selectedSizes)
+    let bundle:any = {
       name:""
     };
     let sizes = Array.from(this.selectedSizes);
     bundle.sizes = sizes;
     bundle.name = this.name;
-    let endpoint = this.bundle.id?this.resolver.updateBundle(this.bundle):this.resolver.addBundle(bundle);
+    if(this.bundle && this.bundle.id) {
+      bundle.id = this.bundle.id
+    }
+    let endpoint = this.bundle && this.bundle.id?this.resolver.updateBundle(bundle):this.resolver.addBundle(bundle);
     endpoint.subscribe((data)=>{
       this.controller.presentAlert("The bundle has been successfully created");
       this.controller.modalCtrl.dismiss();

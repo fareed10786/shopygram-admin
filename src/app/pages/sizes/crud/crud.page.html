@@ -29,7 +29,7 @@
 </ion-content>
 <ion-footer *ngIf="type==2">
   <ion-toolbar color="primary" class="ion-text-center" (click)="createBundle()">
-    Create Bundle
+    {{bundle && bundle.id?"Update Bundle":"Create Bundle"}}
   </ion-toolbar>
 </ion-footer>
 <ion-footer *ngIf="type==1">
