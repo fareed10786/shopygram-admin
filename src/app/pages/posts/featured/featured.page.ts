@@ -46,7 +46,7 @@ export class FeaturedPage implements OnInit {
       this.dtTrigger.next();
     })
   }
-  async openCrudModal(data:any={}) {
+  async openCrudModal(data:any={ medias:[]}) {
 
     const modal = await this.controller.modalCtrl.create({
       component: CrudPage,
