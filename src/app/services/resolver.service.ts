@@ -8,6 +8,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class ResolverService {
+
   removePost(postId:number) {
     return this.http.delete(`${this.baseURL}/posts/${postId}`);
   }
@@ -473,6 +474,10 @@ export class ResolverService {
     return this.http.patch(`${this.baseURL}/brands/${id}/deactivate`,{});
   }
 
+  public  disapproveBrand(id: string) {
+    return this.http.patch(`${this.baseURL}/brands/${id}/disapprove`,{});
+
+  }
   /**
    * 
    * @param post 

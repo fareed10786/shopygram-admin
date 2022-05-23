@@ -124,6 +124,13 @@ export class BrandPage implements OnInit {
       this.getAllBrands();
     })
   }
+  public disapproveBrand(id: string) {
+    this.controller.presentLoading("Dis-approving brand...");
+    this.resolver.disapproveBrand(id).subscribe((data) => {
+      this.controller.loadCtrl.dismiss();
+      this.getAllBrands();
+    })
+  }
   public deactivateBrand(id: string) {
     this.controller.presentLoading("De-activating brand...");
     this.resolver.deactivateBrand(id).subscribe((data) => {
