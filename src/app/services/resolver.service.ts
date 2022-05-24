@@ -504,4 +504,10 @@ export class ResolverService {
   public getFeaturedPosts() {
     return this.http.get(`${this.baseURL}/featuredposts`);
   }
+  public saveSettings(setting) {
+    return this.http.post(`${this.baseURL}/settings`,setting);
+  }
+  public getSettings(key:string) {
+    return this.http.get(`${this.baseURL}/settings/${key}`);
+  }
 }

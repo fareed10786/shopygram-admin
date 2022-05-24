@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { ControllersService } from 'src/app/services/controllers.service';
 import { ResolverService } from 'src/app/services/resolver.service';
 import { CrudPage } from './crud/crud.page';
+import { SettingsPage } from './settings/settings.page';
 
 @Component({
   selector: 'app-featured',
@@ -59,6 +60,16 @@ export class FeaturedPage implements OnInit {
       this.posts = [];
       this.getposts();
     })
+    return await modal.present();
+  }
+  async openSettingsModal() {
+
+    const modal = await this.controller.modalCtrl.create({
+      component: SettingsPage,
+      cssClass: 'my-custom-class',
+     
+    });
+
     return await modal.present();
   }
 

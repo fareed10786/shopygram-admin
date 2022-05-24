@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'crud',
     loadChildren: () => import('./crud/crud.module').then( m => m.CrudPageModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
   }
 ];
 

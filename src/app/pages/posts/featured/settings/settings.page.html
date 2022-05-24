@@ -1,0 +1,48 @@
+<ion-content>
+  <app-header></app-header>
+
+  <div class="wrapper">
+    
+    <div id="content">
+      <div class="container-fluid">
+
+
+
+        <div class="form-row ">
+
+
+          <div class="col-12">
+<ion-card mode="ios" style="margin-top:0px">
+  <h3 class="ion-padding-horizontal">Settings</h3>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item lines="none">
+          <ion-label position="stacked">Interval for each posts</ion-label>
+          <ion-input type="number" min="1" placeholder="Post Caption" [(ngModel)]="settings.featurePostInterval"></ion-input>
+        </ion-item>
+      </ion-col>
+  
+    </ion-row>
+   
+
+    <ion-button mode="ios" expand="full" class="ion-margin" (click)="createFeaturedPost()"
+    (click)="updateSettings()"
+    >
+      Update Settings
+
+    </ion-button>
+
+<!--     <p class="ion-padding-horizontal" *ngIf="!category.id" style="color: red;font-size:13px">
+
+        Note: Platform & Product commission can be added only after a top level category has been created
+   
+    </p> -->
+</ion-card>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</ion-content>
