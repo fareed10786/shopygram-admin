@@ -33,6 +33,7 @@ export class SellersPage implements OnInit {
   dtTrigger: Subject<any> = new Subject<any>();
   @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective;
+  dtLoaded:boolean = false;
   constructor(public resolver:ResolverService,public controller:ControllersService) { }
 
   ngOnInit() {
@@ -42,7 +43,10 @@ export class SellersPage implements OnInit {
     this.controller.presentLoading("Getting sellers...");
     this.resolver.getSellerList().subscribe((data:any)=>{
       this.sellers = data;
-      this.dtTrigger.next();
+      if(!this.dtLoaded){
+        this.dtLoaded = true;
+        this.dtTrigger.next();
+      }
     })
   }
   async openCrudModal(data:any) {
@@ -58,7 +62,10 @@ export class SellersPage implements OnInit {
         // Destroy the table first
         dtInstance.destroy();
         // Call the dtTrigger to rerender again
-        this.dtTrigger.next();
+        if(this.dtLoaded){
+          this.dtLoaded = false;
+         
+        }
       });
   
       this.getsellers();
