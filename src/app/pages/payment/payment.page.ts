@@ -32,7 +32,7 @@ export class PaymentPage implements OnInit {
   @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective;
   response: any[];
-  allowSaleStatuses:Array<any>=[1,2,3,4,5,7]
+  allowSaleStatuses:Array<any>=[7]
   allowReturnStatuses: any = [];
   sales: any;
   returns: any;
