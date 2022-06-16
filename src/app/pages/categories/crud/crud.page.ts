@@ -62,6 +62,7 @@ export class CrudPage implements OnInit {
   subcategories: Array<any>=[];
   subsubcategories:Array<any>=[];
   level:number = 0;
+  files: any;
   constructor(private activatedRoute:ActivatedRoute,public auth:AuthService,public resolver:ResolverService,public controller:ControllersService) { 
     this.activatedRoute.queryParams.subscribe((data)=>{
       if(data.id){
@@ -138,5 +139,24 @@ export class CrudPage implements OnInit {
       this.getSubCategories(this.id);
     })
   }
+  public uploadFile(event) {
 
+    let files = event.target.files;
+    this.files = files;
+    this.uploadFileToServer(this.files[0])
+  }
+  public uploadFileToServer(img) {
+
+    let formData = new FormData();
+    formData.append('file', img);
+    this.resolver.uploadFile(6, formData).toPromise().then((data:any) => {
+      this.category.assets.image = data.url;
+  
+
+    }).catch((err) => {
+      console.log(err);
+    }).finally(() => {
+
+    })
+  }
 }

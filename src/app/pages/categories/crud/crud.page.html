@@ -74,6 +74,12 @@
           <ion-input type="number" placeholder="Commission" [(ngModel)]="category.affiliateCommision"></ion-input>
         </ion-item>
       </ion-col>
+
+        <ion-col style="padding-top: 45px;" size="12">
+          <input type="file" accept="image/*" (change)="uploadFile($event)">
+          <img [src]="category.assets.image" *ngIf="category.assets.image" style="width: 200px;">
+        </ion-col>
+  
     </ion-row>
     <ion-button mode="ios" expand="full" class="ion-margin" (click)="alterCategory(category)" *ngIf="!category.id">
       Add Top Level Category
