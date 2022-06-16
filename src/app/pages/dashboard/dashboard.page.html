@@ -89,6 +89,9 @@
             <ion-col class="ion-padding-vertical">
               <strong>Your Earning</strong>
             </ion-col>
+            <ion-col class="ion-padding-vertical">
+              <strong>Expected Earning</strong>
+            </ion-col>
           </ion-row>
           <ng-container *ngIf="sales && selectedSegment==1">
             <ion-row *ngFor="let sale of sales">
@@ -97,6 +100,13 @@
               </ion-col>
               <ion-col class="ion-padding-vertical">
                 {{sale.created*1000 | date:'dd LLL YY'}}
+              </ion-col>
+              <ion-col class="ion-padding-vertical">
+                <span *ngIf="sale.returnExpiry">
+                <strong>
+                  &#8377;{{ sale.pricing.transferPrice}}
+                </strong>
+                </span>
               </ion-col>
               <ion-col class="ion-padding-vertical">
                 <strong>
@@ -114,8 +124,15 @@
                 {{sale.created*1000 | date:'dd LLL YY'}}
               </ion-col>
               <ion-col class="ion-padding-vertical">
+                <span *ngIf="sale.returnExpiry">
                 <strong>
-                  &#8377;{{sale.pricing.transferPrice}}
+                  &#8377;{{ sale.pricing.transferPrice}}
+                </strong>
+                </span>
+              </ion-col>
+              <ion-col class="ion-padding-vertical">
+                <strong>
+                  &#8377;{{ sale.pricing.transferPrice}}
                 </strong>
               </ion-col>
             </ion-row>

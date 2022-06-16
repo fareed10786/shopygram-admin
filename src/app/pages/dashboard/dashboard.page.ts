@@ -66,6 +66,12 @@ export class DashboardPage implements OnInit {
 
       this.sales = this.totalOrders.filter((item)=>this.allowSaleStatuses.includes(item.status) && (item.created*1000)>=startDate.getTime() && (item.created*1000)<=endDate.getTime() )
       this.returns = this.totalOrders.filter((item)=>this.allowReturnStatuses.includes(item.status) && (item.created*1000)>=startDate.getTime() && (item.created*1000)<=endDate.getTime())
+      this.sales.forEach((item)=>{
+        item.returnExpiry = item.status==7 &&  (Math.abs((item.updated*1000)-new Date().getTime())>=WEEK)
+      })
+      this.returns.forEach((item)=>{
+        item.returnExpiry = item.status==7 &&  (Math.abs((item.updated*1000)-new Date().getTime())>=WEEK)
+      })
     }
   } 
 
@@ -75,7 +81,12 @@ export class DashboardPage implements OnInit {
       this.totalOrders = data;
       let sales = this.response.filter((item)=>this.allowSaleStatuses.includes(item.status))
       let returns = this.response.filter((item)=>this.allowReturnStatuses.includes(item.status))
-
+      sales.forEach((item)=>{
+        item.returnExpiry = item.status==7 && (Math.abs((item.updated*1000)-new Date().getTime())>=WEEK)
+      })
+      returns.forEach((item)=>{
+        item.returnExpiry = item.status==7 &&  (Math.abs((item.updated*1000)-new Date().getTime())>=WEEK)
+      })
       this.sales = sales;
       this.returns = returns;
 
