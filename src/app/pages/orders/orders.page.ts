@@ -17,6 +17,8 @@ export class OrdersPage implements OnInit {
     scrollX: true,
     pageLength: 50,
     dom: 'frtlp',
+    ordering:false,
+
     language: {
       search: "Search :",
       searchPlaceholder: "query",

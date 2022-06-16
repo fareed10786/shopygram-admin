@@ -25,10 +25,10 @@
                                     <th>Last Name</th>
 
                                     <th>Username</th>
-
+                                    <th>Email</th>
                                     <th> Status</th>
 
-                                    <th> Action</th>
+                                  <!--   <th> Action</th> -->
 
                                 </tr>
                             </thead>
@@ -50,15 +50,23 @@
                                         <td class="cs-padding-top">
                                             {{data.userName}}
                                         </td>
-
                                         <td class="cs-padding-top">
-                                            {{data.status?"Active":"Inactive"}}
+                                            {{data.email}}
                                         </td>
-                                        <td>
+                                        <td class="cs-padding-top">
+                                           <ion-select [(ngModel)]="data.status"
+                                           (ionChange)="changeStatus(data)"
+                                           interface="popover"
+                                           >
+                                            <ion-select-option [value]="1">Active</ion-select-option>
+                                            <ion-select-option [value]="0">Inactive</ion-select-option>
+                                           </ion-select>
+                                        </td>
+                                   <!--      <td>
                                             <ion-button 
                                             size="small" (click)="changeStatus(data)"
                                             >Change status</ion-button>
-                                        </td>
+                                        </td> -->
                                     </tr>
                                 </ng-container>
                             </tbody>

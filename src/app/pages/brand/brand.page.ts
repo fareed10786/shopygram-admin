@@ -20,6 +20,7 @@ export class BrandPage implements OnInit {
     scrollX: true,
     pageLength: 50,
     dom: 'frtlp',
+    ordering:false,
     language: {
       search: "Search :",
       searchPlaceholder: "query",
@@ -55,9 +56,12 @@ export class BrandPage implements OnInit {
       if(this.brands.length){
         this.rerender();
       }else {
+       
         this.dtTrigger.next()
       }
       this.brands = data;
+      this.segment = 2;
+      this.onSegmentSelection()
     })
   }
 
@@ -127,6 +131,7 @@ export class BrandPage implements OnInit {
   public disapproveBrand(id: string) {
     this.controller.presentLoading("Dis-approving brand...");
     this.resolver.disapproveBrand(id).subscribe((data) => {
+      this.controller.presentAlert("The brand has been disapproved and an e-mail has been sent to the seller");
       this.controller.loadCtrl.dismiss();
       this.getAllBrands();
     })
@@ -134,10 +139,19 @@ export class BrandPage implements OnInit {
   public deactivateBrand(id: string) {
     this.controller.presentLoading("De-activating brand...");
     this.resolver.deactivateBrand(id).subscribe((data) => {
+
       this.controller.loadCtrl.dismiss();
       this.getAllBrands();
 
     })
+  }
+
+  public updateStatus(data) {
+    if(data.status==-1) {
+      this.disapproveBrand(data.id)
+    } else {
+      this.approveBrand(data.id)
+    }
   }
   public onSegmentSelection(event?) {
     if (this.segment == 1) {
@@ -147,7 +161,7 @@ export class BrandPage implements OnInit {
     }
     if (this.segment == 2) {
       this.results = []
-      this.results = this.brands
+      this.results = this.brands.filter((item)=>item.status==1);
     }
   
   }

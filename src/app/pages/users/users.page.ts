@@ -17,6 +17,7 @@ export class UsersPage implements OnInit {
     scrollX: true,
     pageLength: 50,
     dom: 'frtlp',
+    ordering:false,
     language: {
       search: "Search :",
       searchPlaceholder: "query",
@@ -48,14 +49,14 @@ export class UsersPage implements OnInit {
   public changeStatus(data) {
     this.controller.presentLoading("Updating status...")
 
-    if(data.status) {
-      data.status = 0;
+    if(!data.status) {
+
       this.resolver.deactivateUser(data.id).subscribe((data)=>{
         this.controller.presentAlert("The user has been successfully deactivated");
         this.controller.loadCtrl.dismiss();
       })
     }else {
-      data.status = 1;
+  
       this.resolver.activateUser(data.id).subscribe((data)=>{
         this.controller.presentAlert("The user has been successfully activated");
         this.controller.loadCtrl.dismiss();

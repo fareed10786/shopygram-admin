@@ -54,12 +54,11 @@
       {{post.id?"Update":"Add"}} featured post
 
     </ion-button>
-
-<!--     <p class="ion-padding-horizontal" *ngIf="!category.id" style="color: red;font-size:13px">
-
-        Note: Platform & Product commission can be added only after a top level category has been created
-   
-    </p> -->
+    <ion-row>
+      <ion-col size-md="4" *ngFor="let img of post.medias">
+        <ion-img [src]="img.src"></ion-img>
+      </ion-col>
+    </ion-row>
 </ion-card>
 
 

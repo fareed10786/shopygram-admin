@@ -20,6 +20,7 @@ export class FeaturedPage implements OnInit {
     scrollX: true,
     pageLength: 50,
     dom: 'frtlp',
+    ordering:false,
     language: {
       search: "Search :",
       searchPlaceholder: "query",
@@ -43,9 +44,24 @@ export class FeaturedPage implements OnInit {
   public getposts() {
     this.controller.presentLoading("Getting posts...");
     this.resolver.getFeaturedPosts().subscribe((data:any)=>{
-      this.posts = data;
-      this.dtTrigger.next();
+      let results = data;
+      if(this.posts.length) {
+        this.rerender()
+      }else {
+
+        this.dtTrigger.next();
+      }
+      this.posts = results;
     })
+  }
+  rerender(): void {
+    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+      // Destroy the table first
+      if (dtInstance)
+        dtInstance.destroy();
+      // Call the dtTrigger to rerender again
+      this.dtTrigger.next();
+    });
   }
   async openCrudModal(data:any={ medias:[]}) {
 
@@ -57,7 +73,7 @@ export class FeaturedPage implements OnInit {
       }
     });
     modal.onDidDismiss().then((data)=>{
-      this.posts = [];
+
       this.getposts();
     })
     return await modal.present();

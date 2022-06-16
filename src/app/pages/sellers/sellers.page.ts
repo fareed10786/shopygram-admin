@@ -18,9 +18,11 @@ export class SellersPage implements OnInit {
     scrollX: true,
     pageLength: 50,
     dom: 'frtlp',
+    ordering:false,
     language: {
       search: "Search :",
       searchPlaceholder: "query",
+      
       paginate: {
         next: '&#8594;', // or '→'
         previous: '&#8592;', // or '←' 

@@ -19,6 +19,7 @@
    
                   <th>Post Id</th>
                   <th  colspan="1">Caption</th>
+                  <th>Status</th>
                   <th> Action</th>
 
                 </tr>
@@ -33,7 +34,13 @@
                   <td class="cs-padding-top" colspan="1" class="ion-text-wrap">
                     {{data.caption}}
                   </td>
-  
+                  <td>
+                   <ion-button fill="clear" size="small"
+                   [color]="data.status==1?'dark':'danger'"
+                   >
+                   {{data.status==1?"Active":"Disabled"}}
+                   </ion-button> 
+                  </td>
                   <td>
                     <ion-button [routerLink]="['details',data.postId]" size="small">View</ion-button>
                   </td>
