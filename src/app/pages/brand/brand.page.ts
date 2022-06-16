@@ -112,26 +112,32 @@ export class BrandPage implements OnInit {
     let status = data.status == 0 ? false : true
     if (status != event.target.checked) {
       if (event.target.checked) {
-        this.approveBrand(data.id)
+        this.approveBrand(data)
       }
       else {
 
-        this.deactivateBrand(data.id)
+        this.deactivateBrand(data)
 
       }
     }
   }
-  public approveBrand(id: string) {
+  public approveBrand(data) {
     this.controller.presentLoading("Activating brand...");
-    this.resolver.activateBrand(id).subscribe((data) => {
+    this.resolver.activateBrand(data.id).subscribe((datas) => {
       this.controller.loadCtrl.dismiss();
       this.getAllBrands();
     })
   }
-  public disapproveBrand(id: string) {
+  public disapproveBrand(data) {
     this.controller.presentLoading("Dis-approving brand...");
-    this.resolver.disapproveBrand(id).subscribe((data) => {
-      this.controller.presentAlert("The brand has been disapproved and an e-mail has been sent to the seller");
+    this.resolver.disapproveBrand(data.id).subscribe((datas) => {
+      if(data.seller) {
+        this.controller.presentAlert(`The brand has been disapproved and an e-mail has been sent to the seller at <b>${data.seller.email}</b>`);
+
+      }else {
+        this.controller.presentAlert(`The brand has been disapproved `);
+
+      }
       this.controller.loadCtrl.dismiss();
       this.getAllBrands();
     })
@@ -148,9 +154,9 @@ export class BrandPage implements OnInit {
 
   public updateStatus(data) {
     if(data.status==-1) {
-      this.disapproveBrand(data.id)
+      this.disapproveBrand(data)
     } else {
-      this.approveBrand(data.id)
+      this.approveBrand(data)
     }
   }
   public onSegmentSelection(event?) {

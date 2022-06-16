@@ -24,13 +24,13 @@ export class DetailsPage implements OnInit {
     this.resolver.getReportedPostById(this.postId).subscribe((data:any)=>{
       this.response = data;
       this.post = data
-      console.log(this.post)
+     
     })
   }
   public removePost() {
     this.controller.presentLoading("Removing post...")  ;
     this.resolver.removePost(this.post.id).subscribe((data:any)=>{
-      this.router.navigate(['/posts']);
+     this.getPostDetails();
     })
   }
 

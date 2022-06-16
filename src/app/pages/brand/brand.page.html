@@ -31,6 +31,7 @@
 
                   <th> Sl. No</th>
                   <th>Name</th>
+                  <th>Added by seller</th>
                   <th >Updated</th>
                   <th>Status</th>
      
@@ -44,6 +45,9 @@
                   </td>
                   <td class="cs-padding-top">
                     {{data.name}}
+                  </td>
+                  <td class="cs-padding-top">
+                    {{data.sller?data.seller.name:'-'}}
                   </td>
                   <td class="cs-padding-top">
                     {{(data.updated??data.created)*1000 | date:'shortDate' }}
@@ -65,7 +69,7 @@
                     <ion-button (click)="disapproveBrand(data.id)" size="small">Dis-Approve</ion-button>
                   </td> -->
                   <td *ngIf="data.status!=2" >
-                    <ion-toggle [checked]="data.status==0?false:true"(ionChange)="onStatusChange(data,$event)"></ion-toggle>
+                    <ion-toggle [checked]="data.status==0?false:true" (ionChange)="onStatusChange(data,$event)"></ion-toggle>
                   </td>
               
                 </tr>
