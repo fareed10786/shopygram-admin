@@ -493,7 +493,7 @@ export class ResolverService {
    * @returns 
    */
   public updateFeaturedPost(post:any) {
-    return this.http.patch(`${this.baseURL}/featuredposts`,post);
+    return this.http.patch(`${this.baseURL}/featuredposts/${post.id}`,post);
   }
 
   /**

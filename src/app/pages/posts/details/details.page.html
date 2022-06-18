@@ -21,7 +21,7 @@
                 </ion-text>
               </ion-label>
               <ion-button color="danger" class="ion-float-right ion-margin" (click)="removePost()"
-              *ngIf="post.postStatus!=1" disabled
+              *ngIf="post.status!=1" disabled
               >
                 <ion-icon name="trash" slot="start"></ion-icon>
                 Removed</ion-button>
@@ -73,12 +73,12 @@
       </ion-row>
 
       <ion-button color="danger" class="ion-float-right ion-margin" (click)="removePost()"
-      *ngIf="post.postStatus==1"
+      *ngIf="post.status==1"
       >
         <ion-icon name="trash" slot="start"></ion-icon>
         Remove post</ion-button>
         <ion-button color="danger" class="ion-float-right ion-margin" (click)="removePost()"
-        *ngIf="post.postStatus!=1" disabled
+        *ngIf="post.status!=1" disabled
         >
           <ion-icon name="trash" slot="start"></ion-icon>
           Removed</ion-button>
