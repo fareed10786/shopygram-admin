@@ -496,6 +496,18 @@ export class ResolverService {
     return this.http.patch(`${this.baseURL}/featuredposts/${post.id}`,post);
   }
 
+  public resumeFeaturedPost(post:any = {}) {
+    return this.http.post(`${this.baseURL}/featuredposts/${post.id}/resume`,{});
+  }
+
+  public pauseFeaturedPost(post:any = {}) {
+    return this.http.post(`${this.baseURL}/featuredposts/${post.id}/pause`,{});
+  }
+
+  public stopFeaturedPost(post:any = {}) {
+    return this.http.post(`${this.baseURL}/featuredposts/${post.id}/stop`,{});
+  }
+
   /**
    * 
    * @param post 

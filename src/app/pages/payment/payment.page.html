@@ -20,8 +20,8 @@
                   <th>Shop Name</th>
                   <th>City</th>
                   <th>Pincode</th>
-                  <th>Seller Earning</th>
-                  <th> Payment Received</th>
+                  <th> Total Seller Earning ( from all delivered orders)</th>
+                  <th> Payment Received by Admin</th>
                 </tr>
               </thead>
               <tbody>
@@ -44,10 +44,10 @@
                     {{data.basicInfo.pincode}}
                   </td>
                   <td class="cs-padding-top">
-                    &#8377; {{data.earning}}
+                    &#8377; {{data.earning | number:'1.2-2'}}
                   </td>
                   <td class="cs-padding-top">
-                    &#8377; {{data.earningFromSeller}}
+                    &#8377; {{data.earningFromSeller | number:'1.2-2'}}
                   </td>
                   
                 </tr>

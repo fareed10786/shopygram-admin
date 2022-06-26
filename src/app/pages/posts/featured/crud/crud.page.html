@@ -54,6 +54,25 @@
       {{post.id?"Update":"Add"}} featured post
 
     </ion-button>
+   
+    <ion-row>
+      <ion-col>
+        <ion-button mode="ios" expand="full" class="ion-margin" (click)="toggleFeaturedPost()"
+       
+        >
+          {{post.status==3?"Resume":"Pause"}} featured post
+    
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button mode="ios" expand="full" class="ion-margin" (click)="stopFeaturedPost()"
+       
+        >
+         Stop featured post
+    
+        </ion-button>
+      </ion-col>
+    </ion-row>
     <ion-row>
       <ion-col size-md="4" *ngFor="let img of post.medias">
         <ion-img [src]="img.src"></ion-img>

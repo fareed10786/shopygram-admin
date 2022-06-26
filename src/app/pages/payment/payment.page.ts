@@ -46,7 +46,7 @@ export class PaymentPage implements OnInit {
     this.resolver.getSellerList().subscribe((data:any)=>{
       this.sellers = data;
       this.getOrders();
-      this.dtTrigger.next();
+    
     })
   }
   public getOrders() {
@@ -71,6 +71,7 @@ export class PaymentPage implements OnInit {
         item.earningFromSeller = total.toFixed(2);
       })
       this.returns = returns;
+      this.dtTrigger.next();
 
     })
   }

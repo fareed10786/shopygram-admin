@@ -67,5 +67,28 @@ export class CrudPage implements OnInit {
 
     })
   }
+  public toggleFeaturedPost() {
+    let endpoint = this.post.status==3?this.resolver.resumeFeaturedPost(this.post):this.resolver.pauseFeaturedPost(this.post)
+    endpoint.toPromise().then((data:any)=>{
+      this.controller.loadCtrl.dismiss();
+      this.controller.modalCtrl.dismiss();
+      this.controller.presentToast("The featured post has been successfully changed");
+
+    }).catch((err)=>{
+      this.controller.presentAlert(err.error.error.message);
+    })
+  }
+
+  stopFeaturedPost() {
+    let endpoint = this.resolver.stopFeaturedPost(this.post)
+    endpoint.toPromise().then((data:any)=>{
+      this.controller.loadCtrl.dismiss();
+      this.controller.modalCtrl.dismiss();
+      this.controller.presentToast("The featured post has been stopped");
+
+    }).catch((err)=>{
+      this.controller.presentAlert(err.error.error.message);
+    })
+  }
 
 }
