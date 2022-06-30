@@ -26,6 +26,10 @@ export class CrudPage implements OnInit {
 
   public createFeaturedPost() {
     console.log(this.files);
+
+    if(!this.files.length) {
+      this.alterFeaturedPost()
+    }
     for(let i = 0; i < this.files.length; i++){
       let item = this.files[i]
       this.uploadFileToServer(item,i);
