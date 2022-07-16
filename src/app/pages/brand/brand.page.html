@@ -41,7 +41,7 @@
               <tbody>
                 <tr *ngFor="let data of results;let i = index">
                   <td class="cs-padding-top">
-                    #{{i+1}}
+                    {{i+1}}
                   </td>
                   <td class="cs-padding-top">
                     {{data.name}}
@@ -50,7 +50,7 @@
                     {{data.sller?data.seller.name:'-'}}
                   </td>
                   <td class="cs-padding-top">
-                    {{(data.updated??data.created)*1000 | date:'shortDate' }}
+                    {{(data.updated??data.created)*1000 | date:'dd/mm/yyyy' }}
                   </td>
                   <td *ngIf="data.status==2 ">
                     <ion-select interface="popover" [(ngModel)]="data.status"

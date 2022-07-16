@@ -46,12 +46,12 @@ export class BrandPage implements OnInit {
     this.getAllBrands();
   }
 
-  public getAllBrands() {
+  public getAllBrands(refresh:boolean = false) {
     this.results = [];
     this.controller.presentLoading("Getting brand list...");
     this.resolver.getAllBrands().subscribe((data: any[]) => {
       this.controller.loadCtrl.dismiss();
-      this.results = data;
+      this.results = data.reverse();
 
       if(this.brands.length){
         this.rerender();
@@ -60,8 +60,10 @@ export class BrandPage implements OnInit {
         this.dtTrigger.next()
       }
       this.brands = data;
+      if(!refresh){
       this.segment = 2;
       this.onSegmentSelection()
+      }
     })
   }
 
@@ -125,7 +127,7 @@ export class BrandPage implements OnInit {
     this.controller.presentLoading("Activating brand...");
     this.resolver.activateBrand(data.id).subscribe((datas) => {
       this.controller.loadCtrl.dismiss();
-      this.getAllBrands();
+      this.getAllBrands(true);
     })
   }
   public disapproveBrand(data) {
@@ -139,7 +141,7 @@ export class BrandPage implements OnInit {
 
       }
       this.controller.loadCtrl.dismiss();
-      this.getAllBrands();
+      this.getAllBrands(true);
     })
   }
   public deactivateBrand(id: string) {
@@ -147,7 +149,7 @@ export class BrandPage implements OnInit {
     this.resolver.deactivateBrand(id).subscribe((data) => {
 
       this.controller.loadCtrl.dismiss();
-      this.getAllBrands();
+      this.getAllBrands(true);
 
     })
   }
