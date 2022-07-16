@@ -21,12 +21,13 @@
             <tr>
              
                 <th> Sl. No</th>
+                <th> Unique Id</th>
             
-            
-                <th>Name</th>
-           
+                <th>Style No</th>
+                <th>Brand</th>
+               
                 <th>Category</th>
-        
+                <th>Description</th>
                 <th> Status</th>
             
          
@@ -36,7 +37,13 @@
             <ng-container *ngFor="let data of products;let i = index">
             <tr *ngIf="data.relatedInformation.name">
               <td  class="cs-padding-top">
-                #{{i+1}}
+                {{i+1}}
+              </td>
+              <td class="cs-padding-top">
+                {{data.id}}
+              </td>
+              <td class="cs-padding-top">
+                {{data.relatedInformation.styleNo}}
               </td>
               <td class="cs-padding-top">
                 {{data.relatedInformation.name}}
@@ -45,7 +52,9 @@
               <td class="cs-padding-top">
                 {{data.categories.path??'No category since product created in earlier version'}}
               </td>
-         
+              <td class="cs-padding-top">
+                <div style="width: 200px !important;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{data.description.value}}</div>
+              </td>
 
               <td class="cs-padding-top">
                 {{data.status==1?"Active":"Inactive"}}<br/>

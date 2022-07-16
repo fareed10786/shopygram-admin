@@ -39,7 +39,7 @@ export class ProductsPage implements OnInit {
   public getproducts() {
     this.controller.presentLoading("Getting products...");
     this.resolver.getProducts().subscribe((data:any)=>{
-      this.products = data;
+      this.products = data.reverse();
       this.dtTrigger.next()
     })
   }
