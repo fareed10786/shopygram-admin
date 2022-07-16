@@ -16,7 +16,8 @@ export class PostsPage implements OnInit {
     pagingType: 'full_numbers',
     scrollX: true,
     pageLength: 50,
-    dom: 'frtlp',
+  dom: 'frtlp',
+    responsive:true,
     language: {
       search: "Search :",
       searchPlaceholder: "query",
@@ -40,7 +41,7 @@ export class PostsPage implements OnInit {
   public getposts() {
     this.controller.presentLoading("Getting posts...");
     this.resolver.getReportedPosts().subscribe((data:any)=>{
-      this.posts = data;
+      this.posts = data.reverse();
       this.dtTrigger.next();
     })
   }

@@ -24,7 +24,7 @@
               *ngIf="post.status!=1" disabled
               >
                 <ion-icon name="trash" slot="start"></ion-icon>
-                Removed</ion-button>
+                Removed on {{(response.updated*1000)|date:'fullDate'}} {{(response.updated*1000)|date:'mediumTime'}}</ion-button>
               </ion-item>
          
             </ion-col>
@@ -81,7 +81,7 @@
         *ngIf="post.status!=1" disabled
         >
           <ion-icon name="trash" slot="start"></ion-icon>
-          Removed</ion-button>
+          Removed on {{(response.updated*1000)|date:'fullDate'}} {{(response.updated*1000)|date:'mediumTime'}}</ion-button>
       </ion-card>
       </div>
     </div>

@@ -17,7 +17,8 @@ export class SellersPage implements OnInit {
     pagingType: 'full_numbers',
     scrollX: true,
     pageLength: 50,
-    dom: 'frtlp',
+  dom: 'frtlp',
+    responsive:true,
     ordering:false,
     language: {
       search: "Search :",
