@@ -38,7 +38,7 @@
                             </thead>
                             <tbody>
 
-                                <ng-container *ngFor="let data of users.reverse();let i = index">
+                                <ng-container *ngFor="let data of users;let i = index">
                                     <tr *ngIf="data.firstName">
                                         <td class="cs-padding-top">
                                             {{i+1}}
