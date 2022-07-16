@@ -19,6 +19,11 @@ export class UsersPage implements OnInit {
   dom: 'frtlp',
     responsive:true,
     ordering:false,
+    columnDefs:[
+      { orderable: false, targets: 0 }
+    ],
+    order: [[1, 'desc']],
+
     language: {
       search: "Search :",
       searchPlaceholder: "query",
