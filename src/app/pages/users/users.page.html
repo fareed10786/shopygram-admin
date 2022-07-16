@@ -18,7 +18,8 @@
 
                                     <th> Sl. No</th>
 
-                              
+                                    <th> Unique Id</th>
+
 
                                     <th>First Name</th>
 
@@ -26,6 +27,9 @@
 
                                     <th>Username</th>
                                     <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>DOB</th>
+                                    <th>Gender</th>
                                     <th> Status</th>
 
                                   <!--   <th> Action</th> -->
@@ -37,9 +41,11 @@
                                 <ng-container *ngFor="let data of users.reverse();let i = index">
                                     <tr *ngIf="data.firstName">
                                         <td class="cs-padding-top">
-                                            #{{i+1}}
+                                            {{i+1}}
                                         </td>
-                                 
+                                        <td class="cs-padding-top">
+                                            {{data.id}}
+                                        </td>
                                         <td class="cs-padding-top">
                                             {{data.firstName}}
                                         </td>
@@ -52,6 +58,15 @@
                                         </td>
                                         <td class="cs-padding-top">
                                             {{data.email}}
+                                        </td>
+                                        <td class="cs-padding-top">
+                                            {{data.phoneNo}}
+                                        </td>
+                                        <td class="cs-padding-top">
+                                            {{data.dateOfBirth}}
+                                        </td>
+                                        <td class="cs-padding-top">
+                                            {{data.gender==1?"Male":"Female"}}
                                         </td>
                                         <td class="cs-padding-top">
                                            <ion-select [(ngModel)]="data.status"

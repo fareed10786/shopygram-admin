@@ -42,7 +42,7 @@ export class UsersPage implements OnInit {
   public getUsers() {
     this.controller.presentLoading("Getting users...");
     this.resolver.getAllUsers().subscribe((data:any)=>{
-      this.users = data;
+      this.users = data.reverse();
       this.dtTrigger.next();
     })
   }
