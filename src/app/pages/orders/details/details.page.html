@@ -214,12 +214,15 @@
       </ion-row>
       <h3>Location Details</h3>
       <ion-row>
-        <ion-col *ngFor="let data of order.scanDetails" size="4">
+        <ion-col *ngFor="let data of order.scanDetails" size="5">
           <ion-item lines="none">
-            <ion-label position="stacked">At {{(data.scan_date_time}}</ion-label>
+            <ion-label position="stacked">At {{data.scan_date_time}}</ion-label>
             <ion-input type="text" placeholder="Category name"  [value]="data.status+'('+data.remark+')'" readonly></ion-input>
           </ion-item>
-          <strong>{{data.scan_location}}</strong>
+          <div class="ion-padding-horizontal ion-margin-horizontal">
+            <strong>Location: {{data.scan_location}}</strong>
+
+          </div>
         </ion-col>
       </ion-row>
       </ion-card>
