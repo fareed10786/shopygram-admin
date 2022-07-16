@@ -50,7 +50,7 @@
                     {{data.sller?data.seller.name:'-'}}
                   </td>
                   <td class="cs-padding-top">
-                    {{(data.updated??data.created)*1000 | date:'dd/mm/yyyy' }}
+                    {{(data.updated??data.created)*1000 | date:'dd/MM/yyyy' }}
                   </td>
                   <td *ngIf="data.status==2 ">
                     <ion-select interface="popover" [(ngModel)]="data.status"
