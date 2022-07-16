@@ -49,7 +49,7 @@
     </ion-row>
 
     <ion-button mode="ios" expand="full" class="ion-margin" (click)="createFeaturedPost()"
-    [disabled]="!post.clickCriteria || !post.viewCriteria"
+    [disabled]="!post.clickCriteria  && !post.viewCriteria"
     >
       {{post.id?"Update":"Add"}} featured post
 

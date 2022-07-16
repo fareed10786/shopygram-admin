@@ -14,6 +14,8 @@ export class CrudPage implements OnInit {
 
 
   post:any = {
+    viewCriteria:0,
+    clickCriteria:0,
     medias:[],
   };
   files:Array<any>=[];

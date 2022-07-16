@@ -33,6 +33,13 @@
                   <td >
                     Clicks
                   </td>
+                  <td>
+                    Created Date
+                  </td>
+                  <td>
+                    Last updated   
+                  </td>
+                  <td>Status</td>
                   <th> Action</th>
 
                 </tr>
@@ -53,6 +60,15 @@
                   <td class="cs-padding-top" colspan="1" class="ion-text-wrap">
                     {{data.totalClick??0}}
                   </td>
+                  <td>{{data.created*1000| date:'dd/MM/yyyy'}}
+                  </td>
+                  <td>{{data.updated*1000| date:'dd/MM/yyyy'}}
+                  </td>
+                  <td>
+                    <ion-button size="small" color="success" fill="clear" *ngIf="data.status==1">Active</ion-button>
+                    <ion-button size="small" color="danger" fill="clear" *ngIf="data.status==0">Exhausted</ion-button>
+                    <ion-button size="small" color="primary" fill="clear" *ngIf="data.status==3">Paused</ion-button>
+
                   <td>
                     <ion-button (click)="openCrudModal(data)" size="small">View</ion-button>
                   </td>
