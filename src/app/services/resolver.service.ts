@@ -458,6 +458,14 @@ export class ResolverService {
     return this.http.patch(`${this.baseURL}/sizes/${id}/deactivate`,size);
   }
 
+
+  public activateBundle(id:string) {
+    return this.http.patch(`${this.baseURL}/bundles/${id}/activate`,{});
+  }
+  public deactivateBundle(id:string) {
+    return this.http.patch(`${this.baseURL}/bundles/${id}/deactivate`,{});
+  }
+
   public getAllBrands() {
     return this.http.get(`${this.baseURL}/brands`);
 

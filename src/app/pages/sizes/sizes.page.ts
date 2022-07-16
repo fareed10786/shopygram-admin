@@ -145,6 +145,29 @@ export class SizesPage implements OnInit {
       this.controller.loadCtrl.dismiss();
     })
   }
+  public approveBundle(id: string) {
+    this.controller.presentLoading("Activating bundle...");
+    this.resolver.activateBundle(id).subscribe((data) => {
+      this.controller.loadCtrl.dismiss();
+      this.getAllBundles();
+
+    })
+  }
+  public deactivateBundle(id: string) {
+    this.controller.presentLoading("De-activating bundle...");
+    this.resolver.deactivateBundle(id).subscribe((data) => {
+      this.controller.loadCtrl.dismiss();
+      this.getAllBundles();
+    })
+  }
+
+  public changeBundleStatus(data) {
+    if(data.status==1) {
+      this.deactivateBundle(data.id)
+    } else {
+      this.approveBundle(data.id)
+    }
+  }
   public onSegmentSelection(event?) {
     if (this.segment == 1) {
       this.results = []

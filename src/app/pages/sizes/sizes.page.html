@@ -71,22 +71,27 @@
                   <th> Sl. No</th>
                   <th>Name</th>
                   <th>Status</th>
-     
+                  <th>Action</th>
+
 
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let data of results;let i = index">
                   <td class="cs-padding-top">
-                    #{{i+1}}
+                    {{i+1}}
                   </td>
                   <td class="cs-padding-top">
                     {{data.name}}
                   </td>
-      
-       
-                  <td  >
-                  <ion-button (click)="openCrudModal(2,data)">Edit</ion-button>
+            
+                  <td>
+                    {{data.status==1?"Active":"Inactive"}}
+                  </td>
+                  <td>
+                    <ion-button size="small" (click)="openCrudModal(2,data)">Edit</ion-button>
+                    <ion-button size="small" (click)="changeBundleStatus(data)">{{data.status==1?"Deactivate":"Activate"}}</ion-button>
+
                   </td>
               
                 </tr>
