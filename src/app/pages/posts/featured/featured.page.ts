@@ -21,7 +21,13 @@ export class FeaturedPage implements OnInit {
     pageLength: 50,
   dom: 'frtlp',
     responsive:true,
-    ordering:false,
+       columnDefs:[
+      { orderable: true, targets: 0 }
+    ],
+    order: [
+      [0, 'desc'],
+    
+   ],
     language: {
       search: "Search :",
       searchPlaceholder: "query",

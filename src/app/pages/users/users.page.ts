@@ -18,8 +18,15 @@ export class UsersPage implements OnInit {
     pageLength: 50,
   dom: 'frtlp',
     responsive:true,
-    ordering:false,
+    
 
+    columnDefs:[
+      { orderable: true, targets: 0 }
+    ],
+    order: [
+      [0, 'desc'],
+    
+    ],
 
     language: {
       search: "Search :",
@@ -44,7 +51,7 @@ export class UsersPage implements OnInit {
   }
   public getUsers() {
     this.controller.presentLoading("Getting users...");
-    this.resolver.getAllUsers().subscribe((data:any)=>{
+    this.resolver.getAllUsers().subscribe((data:any[])=>{
       this.users = data.reverse();
       this.dtTrigger.next();
     })

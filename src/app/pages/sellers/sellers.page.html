@@ -16,7 +16,7 @@
               <thead>
                 <tr>
 
-                  <th> Sl. No</th>
+                  <th> Unique id</th>
 
                   <th>Name</th>
 
@@ -35,7 +35,7 @@
               <tbody>
                 <tr *ngFor="let data of sellers;let i = index">
                   <td class="cs-padding-top">
-                    #{{i+1}}
+                    {{data.basicInfo.id}}
                   </td>
                   <td class="cs-padding-top">
                     {{data.basicInfo.userName}}

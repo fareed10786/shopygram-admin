@@ -22,6 +22,13 @@ export class SizesPage implements OnInit {
     pageLength: 50,
   dom: 'frtlp',
     responsive:true,
+    columnDefs:[
+      { orderable: true, targets: 0 }
+    ],
+    order: [
+      [0, 'desc'],
+    
+    ],
     language: {
       search: "Search :",
       searchPlaceholder: "query",
