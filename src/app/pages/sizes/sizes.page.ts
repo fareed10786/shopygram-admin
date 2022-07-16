@@ -53,7 +53,7 @@ export class SizesPage implements OnInit {
     this.controller.presentLoading("Getting size list...");
     this.resolver.getAllSizes().subscribe((data: any[]) => {
       this.controller.loadCtrl.dismiss();
-      this.results = data;
+      this.results = data.reverse();
 
       if(this.sizes.length){
         this.rerender();
