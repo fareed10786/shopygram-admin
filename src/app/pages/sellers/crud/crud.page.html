@@ -40,6 +40,76 @@
         </ion-item>
       </ion-col>
     </ion-row>
+    <h3 class="ion-margin-horizontal">GST Details</h3>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label position="stacked">GST No</ion-label>
+          <ion-input type="text" placeholder="GST number" [(ngModel)]="seller.kycDetails.gstNo"
+          readonly
+
+          ></ion-input>
+
+        </ion-item>
+        </ion-col>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label position="stacked">GST address</ion-label>
+          <ion-input type="text" placeholder="GST address" expand="full" [(ngModel)]="seller.kycDetails.gstAddress"></ion-input>
+
+        </ion-item>
+
+      </ion-col>
+
+    </ion-row>
+    <h3 class="ion-margin-horizontal">Bank Details</h3>
+
+    <ion-row>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label position="stacked">Bank Account No.</ion-label>
+          <ion-input type="text" placeholder="Account number" [(ngModel)]="seller.bankDetails.bankAccountNo"
+          readonly
+
+          ></ion-input>
+
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label position="stacked">Account holder name</ion-label>
+          <ion-input type="text" placeholder="Holder Name" expand="full" [(ngModel)]="seller.bankDetails.bankAccountHolderName"></ion-input>
+
+        </ion-item>
+
+      </ion-col>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label position="stacked">Bank Name</ion-label>
+          <ion-input type="text" placeholder="Bank Name" expand="full" [(ngModel)]="seller.bankDetails.bankName"></ion-input>
+
+        </ion-item>
+
+      </ion-col>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label position="stacked">Bank IFSC</ion-label>
+          <ion-input type="text" placeholder="Bank IFSC" expand="full" [(ngModel)]="seller.bankDetails.bankIFSC"></ion-input>
+
+        </ion-item>
+
+      </ion-col>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label position="stacked">Bank branch</ion-label>
+          <ion-input type="text" placeholder="Branch name" expand="full" [(ngModel)]="seller.bankDetails.bankBranchName"></ion-input>
+
+        </ion-item>
+
+      </ion-col>
+    </ion-row>
+    <h3 class="ion-margin-horizontal">KYC Details</h3>
+
     <ion-row>
       <ion-col>
         <ion-item lines="none">
