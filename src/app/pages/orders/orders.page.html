@@ -41,8 +41,10 @@
                     </td>
                     <td class="cs-padding-top">
                       {{data.user.firstName}} {{data.user.lastName}} <br />
+                      <span *ngIf="data.delivery">
                       {{data.delivery.road}} , {{data.delivery.flatNo}}, {{data.delivery.area}},
                       {{data.delivery.city}}, {{data.delivery.pincode}}
+                      </span>
                     </td>
                     <td class="cs-padding-top">
                       {{data.pricing.totalAmount|number:'1.2-2'}}<br />
