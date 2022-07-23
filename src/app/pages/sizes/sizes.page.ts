@@ -180,7 +180,7 @@ export class SizesPage implements OnInit {
     if (this.segment == 1) {
       this.results = []
 
-      this.results = this.sizes.filter((item)=>item.status==2);
+      this.results = this.sizes.filter((item)=>item.status==1);
     }
     if (this.segment == 2) {
       this.results = []
