@@ -151,9 +151,9 @@ export class BrandPage implements OnInit {
       this.getAllBrands(true);
     })
   }
-  public deactivateBrand(id: string) {
+  public deactivateBrand(data) {
     this.controller.presentLoading("De-activating brand...");
-    this.resolver.deactivateBrand(id).subscribe((data) => {
+    this.resolver.deactivateBrand(data.id).subscribe((data) => {
 
       this.controller.loadCtrl.dismiss();
       this.getAllBrands(true);
