@@ -58,7 +58,7 @@ export class BrandPage implements OnInit {
     this.controller.presentLoading("Getting brand list...");
     this.resolver.getAllBrands().subscribe((data: any[]) => {
       this.controller.loadCtrl.dismiss();
-      this.results = data.reverse();
+      this.results = data
 
       if(this.brands.length){
         this.rerender();
