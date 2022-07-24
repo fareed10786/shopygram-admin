@@ -44,15 +44,17 @@ export class SizesPage implements OnInit {
   dtTrigger: Subject<any> = new Subject<any>();
   dtTriggerB: Subject<any> = new Subject<any>();
 
-  segment: number = 2;
+  segment: number = 1;
   results: Array<any> = [];
   bundles: Array<any> = [];
   @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective;
+  lastSegment:number = 0;
   constructor(private router: Router, public auth: AuthService, public resolver: ResolverService, public controller: ControllersService) { }
 
   ngOnInit() {
     this.getAllSizes();
+    this.getAllBundles();
   }
 
   public getAllSizes() {
@@ -60,7 +62,7 @@ export class SizesPage implements OnInit {
     this.controller.presentLoading("Getting size list...");
     this.resolver.getAllSizes().subscribe((data: any[]) => {
       this.controller.loadCtrl.dismiss();
-      this.results = data.reverse();
+
 
       if(this.sizes.length){
         this.rerender();
@@ -68,6 +70,7 @@ export class SizesPage implements OnInit {
         this.dtTrigger.next()
       }
       this.sizes = data;
+      this.onSegmentSelection()
     })
   }
 
@@ -76,13 +79,10 @@ export class SizesPage implements OnInit {
     this.controller.presentLoading("Getting bundle list...");
     this.resolver.getAllSizeBundles().subscribe((data: any[]) => {
       this.controller.loadCtrl.dismiss();
-      this.results = data;
-      if(!this.bundles.length){
     
-        this.dtTriggerB.next()
-      }
+   
       this.bundles = data;
-
+     // this.onSegmentSelection()
     });
   }
 
@@ -177,17 +177,25 @@ export class SizesPage implements OnInit {
     }
   }
   public onSegmentSelection(event?) {
-    if (this.segment == 1) {
-      this.results = []
-
-      this.results = this.sizes.filter((item)=>item.status==1);
-    }
+    
     if (this.segment == 2) {
-      this.results = []
-      this.results = this.sizes
+    
+
+      this.results = this.sizes.filter((item)=>item.status==2);
+      this.rerender();
+
+      console.log(this.results)
+    }
+    if (this.segment == 1) {
+   
+      this.results = this.sizes.filter((item)=>item.status==1);
+      this.rerender();
+
     }
     if (this.segment == 3) {
-      this.getAllBundles();
+      this.results = this.bundles
+      this.rerender();
     }
+
   }
 }
