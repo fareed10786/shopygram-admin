@@ -16,7 +16,14 @@ export class PaymentPage implements OnInit {
     scrollX: true,
     pageLength: 50,
   dom: 'frtlp',
-    responsive:true,
+  responsive:true,
+  columnDefs:[
+ { orderable: true, targets: 0 }
+],
+order: [
+ [0, 'asc'],
+
+],
     language: {
       search: "Search :",
       searchPlaceholder: "query",
@@ -37,16 +44,17 @@ export class PaymentPage implements OnInit {
   allowReturnStatuses: any = [];
   sales: any;
   returns: any;
+  orders:any=[]
   constructor(public resolver:ResolverService,public controller:ControllersService) { }
 
   ngOnInit() {
-    this.getsellers();
+    this.getOrders();
   }
   public getsellers() {
     this.controller.presentLoading("Getting sellers...");
     this.resolver.getSellerList().subscribe((data:any)=>{
       this.sellers = data;
-      this.getOrders();
+
     
     })
   }
@@ -54,24 +62,8 @@ export class PaymentPage implements OnInit {
     this.resolver.getOrders().toPromise().then((data:any[])=>{
       this.response = data;
       let sales = this.response.filter((item)=>this.allowSaleStatuses.includes(item.status))
-      let returns = this.response.filter((item)=>this.allowReturnStatuses.includes(item.status))
-
-      this.sales = sales;
-      this.sellers.forEach((item)=>{
-        let data = this.sales.filter((sale)=>sale.sellerId==item.basicInfo.id );
-        let total = 0;
-        let earning = 0;
-        if(data.length) {
-          console.log(item.id)
-          data.forEach(element => {
-            total+= (element.pricing.quantity??1) * (element.pricing.transferPrice); 
-            earning += (element.pricing.quantity??1)*(element.pricing.sellingPrice - (element.pricing.transferPrice));
-          });
-        }
-        item.earning = earning;
-        item.earningFromSeller = total.toFixed(2);
-      })
-      this.returns = returns;
+      this.orders = this.response;
+      
       this.dtTrigger.next();
 
     })
