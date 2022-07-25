@@ -133,27 +133,27 @@ export class SizesPage implements OnInit {
     let status = data.status == 0 ? false : true
     if (status != event.target.checked) {
       if (event.target.checked) {
-        this.approveSize(data.id)
+        this.approveSize(data)
       }
       else {
-        this.deactivateSize(data.id)
+        this.deactivateSize(data)
 
       }
     }
   }
-  public approveSize(id: string) {
+  public approveSize(data) {
     this.controller.presentLoading("Activating size...");
-    this.resolver.activateSize(id).subscribe((data) => {
+    this.resolver.activateSize(data.id).subscribe((data) => {
       this.controller.loadCtrl.dismiss();
     })
   }
-  public deactivateSize(id: string) {
+  public deactivateSize(data) {
     this.controller.presentLoading("De-activating size...");
-    this.resolver.deactivateSize(id).subscribe((data) => {
+    this.resolver.deactivateSize(data.id).subscribe((data) => {
       this.controller.loadCtrl.dismiss();
     })
   }
-  public approveBundle(id: string) {
+  public approveBundle(id) {
     this.controller.presentLoading("Activating bundle...");
     this.resolver.activateBundle(id).subscribe((data) => {
       this.controller.loadCtrl.dismiss();
@@ -161,7 +161,7 @@ export class SizesPage implements OnInit {
 
     })
   }
-  public deactivateBundle(id: string) {
+  public deactivateBundle(id) {
     this.controller.presentLoading("De-activating bundle...");
     this.resolver.deactivateBundle(id).subscribe((data) => {
       this.controller.loadCtrl.dismiss();
