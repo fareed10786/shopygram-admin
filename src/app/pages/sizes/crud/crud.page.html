@@ -12,10 +12,14 @@
         <ion-input type="text" placeholder="Bundle name" [(ngModel)]="name"></ion-input>
       </ion-item>
       <div class="ion-padding-horizontal">
+        <ng-container *ngFor="let size of sizes">
         <div class="size" (click)="toggleSelection(size.id)" [ngClass]="isSizePresent(size.id)?'selected':''"
-          *ngFor="let size of sizes">
+        
+        *ngIf="size.status==1"
+        >
           {{size.name}}
         </div>
+        </ng-container>
       </div>
     </ion-card-content>
     <ion-card-content *ngIf="type==1">

@@ -21,14 +21,15 @@
 
 
           <div class="col-12">
-            <select class="custom-select form-control" [(ngModel)]="segment" (change)="onSegmentSelection()">
-              <option [value]="1">Show Pending Sizes</option>
-              <option [value]="2">Show Approved Sizes</option>
+            <select class="custom-select form-control" [(ngModel)]="segment" (change)="onSegmentSelection($event)">
+              <option [value]="2">Show Pending Sizes</option>
+              <option [value]="1">Show Approved Sizes</option>
               <option [value]="3">Show Bundles</option>
             </select>
             <table [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" datatable class="table w-100 nowrap"
-            *ngIf="segment!=3"
+      
             >
+            <ng-container       *ngIf="segment!=3">
               <thead>
                 <tr>
 
@@ -60,43 +61,42 @@
               
                 </tr>
               </tbody>
-            </table>
-            <table [dtOptions]="dtOptions" [dtTrigger]="dtTriggerB" datatable class="table w-100 nowrap"
-            *ngIf="segment==3"
-
-            >
-              <thead>
-                <tr>
-
-                  <th> Sl. No</th>
-                  <th>Name</th>
-                  <th>Status</th>
-                  <th>Action</th>
-
-
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let data of results;let i = index">
-                  <td class="cs-padding-top">
-                    {{i+1}}
-                  </td>
-                  <td class="cs-padding-top">
-                    {{data.name}}
-                  </td>
-            
-                  <td>
-                    {{data.status==1?"Active":"Inactive"}}
-                  </td>
-                  <td>
-                    <ion-button size="small" (click)="openCrudModal(2,data)">Edit</ion-button>
-                    <ion-button size="small" (click)="changeBundleStatus(data)">{{data.status==1?"Deactivate":"Activate"}}</ion-button>
-
-                  </td>
+              </ng-container>
+              <ng-container       *ngIf="segment==3">
+                <thead>
+                  <tr>
+  
+                    <th> Sl. No</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Action</th>
+  
+  
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of bundles;let i = index">
+                    <td class="cs-padding-top">
+                      {{i+1}}
+                    </td>
+                    <td class="cs-padding-top">
+                      {{data.name}}
+                    </td>
               
-                </tr>
-              </tbody>
+                    <td>
+                      {{data.status==1?"Active":"Inactive"}}
+                    </td>
+                    <td>
+                      <ion-button size="small" (click)="openCrudModal(2,data)">Edit</ion-button>
+                      <ion-button size="small" (click)="changeBundleStatus(data)">{{data.status==1?"Deactivate":"Activate"}}</ion-button>
+  
+                    </td>
+                
+                  </tr>
+                </tbody>
+              </ng-container>
             </table>
+ 
           </div>
         </div>
       </div>

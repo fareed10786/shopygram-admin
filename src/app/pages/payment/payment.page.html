@@ -16,40 +16,42 @@
               <thead>
                 <tr>
                  <th> Sl. No</th>
-                  <th>Name</th>
+                  <th>Date</th>
+                  <th>Order #</th>
                   <th>Shop Name</th>
-                  <th>City</th>
-                  <th>Pincode</th>
-                  <th> Total Seller Earning ( from all delivered orders)</th>
-                  <th> Payment Received by Admin</th>
-                </tr>
+                  <th>Cart Amount</th>
+                  <th>Delivery Charges</th>
+                  <th>Total Platform Earning</th>
+                  <th>Total Transfer Price</th>
+                       </tr>
               </thead>
               <tbody>
-                <ng-container  *ngFor="let data of sellers;let i = index">
-                <tr *ngIf="data.earningFromSeller>0">
+                <ng-container  *ngFor="let data of orders;let i = index">
+                <tr >
                   <td class="cs-padding-top">
-                    #{{i+1}}
+                    {{i+1}}
                   </td>
                   <td class="cs-padding-top">
-                    {{data.basicInfo.userName}}
+                    {{data.created*1000 | date:'dd LLL YYYY'}}
                   </td>
                   <td class="cs-padding-top">
-                    {{data.basicInfo.shopName}}
-                  </td>
-
-                  <td class="cs-padding-top">
-                    {{data.basicInfo.city}}
+                    {{data.orderId}}
                   </td>
                   <td class="cs-padding-top">
-                    {{data.basicInfo.pincode}}
+                    {{data.seller.shopName}}
                   </td>
                   <td class="cs-padding-top">
-                    &#8377; {{data.earning | number:'1.2-2'}}
+                    {{data.pricing.totalAmount}}
                   </td>
                   <td class="cs-padding-top">
-                    &#8377; {{data.earningFromSeller | number:'1.2-2'}}
+                    {{data.pricing.deliveryCharges}}
                   </td>
-                  
+                  <td class="cs-padding-top">
+                    {{(data.pricing.sellingPrice -  data.pricing.transferPrice) | number:'1.2-2'}}
+                  </td>
+                  <td class="cs-padding-top">
+                    {{data.pricing.transferPrice}}
+                  </td>
                 </tr>
                 </ng-container>
               </tbody>
