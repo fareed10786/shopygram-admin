@@ -143,13 +143,15 @@ export class SizesPage implements OnInit {
   }
   public approveSize(data) {
     this.controller.presentLoading("Activating size...");
-    this.resolver.activateSize(data.id).subscribe((data) => {
+    this.resolver.activateSize(data.id).subscribe((resp) => {
+      data.status = 1
       this.controller.loadCtrl.dismiss();
     })
   }
   public deactivateSize(data) {
     this.controller.presentLoading("De-activating size...");
-    this.resolver.deactivateSize(data.id).subscribe((data) => {
+    this.resolver.deactivateSize(data.id).subscribe((resp) => {
+      data.status = 0
       this.controller.loadCtrl.dismiss();
     })
   }
