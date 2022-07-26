@@ -47,11 +47,12 @@
                     {{data.pricing.deliveryCharges}}
                   </td>
                   <td class="cs-padding-top">
-                    {{(data.pricing.sellingPrice -  data.pricing.transferPrice) | number:'1.2-2'}}
-                  </td>
-                  <td class="cs-padding-top">
                     {{data.pricing.transferPrice}}
                   </td>
+                  <td class="cs-padding-top">
+                    {{(data.pricing.sellingPrice -  data.pricing.transferPrice) | number:'1.2-2'}}
+                  </td>
+                  
                 </tr>
                 </ng-container>
               </tbody>

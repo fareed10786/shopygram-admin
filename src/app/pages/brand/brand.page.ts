@@ -21,7 +21,7 @@ export class BrandPage implements OnInit {
     pageLength: 50,
   dom: 'frtlp',
     responsive:true,
-       columnDefs:[
+    columnDefs:[
       { orderable: true, targets: 0 }
     ],
     order: [
@@ -66,7 +66,7 @@ export class BrandPage implements OnInit {
        
         this.dtTrigger.next()
       }
-      this.brands = data;
+      this.brands = data
       if(!refresh){
       this.segment = 2;
       this.onSegmentSelection()
@@ -178,6 +178,7 @@ export class BrandPage implements OnInit {
       this.results = []
       this.results = this.brands.filter((item)=>item.status==1);
     }
+    this.rerender();
   
   }
 }
