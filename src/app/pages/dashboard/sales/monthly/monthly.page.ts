@@ -83,6 +83,6 @@ export class MonthlyPage implements OnInit,ViewWillEnter {
     }
   }
   public goToMonthSale(index:number) {
-    this.router.navigate(['/dashboard/monthly'],{queryParams:{month:index}});
+    this.router.navigate(['/sg-admin/dashboard/monthly'],{queryParams:{month:index}});
   }
 }

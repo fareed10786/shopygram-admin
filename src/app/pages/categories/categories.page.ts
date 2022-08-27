@@ -54,9 +54,9 @@ export class CategoriesPage implements OnInit {
 
   goToCategory(data?:Category){
     if(!data)
-    this.router.navigate(['/categories/crud']);
+    this.router.navigate(['/sg-admin/categories/crud']);
     else {
-      this.router.navigate(['/categories/crud'],{queryParams:{id:data.id}});
+      this.router.navigate(['/sg-admin/categories/crud'],{queryParams:{id:data.id}});
 
     }
   }

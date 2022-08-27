@@ -20,23 +20,7 @@ export class LoginPage implements OnInit {
     private activatedRoute: ActivatedRoute
 
   ) {
-    this.activatedRoute.queryParams.subscribe((data) => {
-      if (data.code) {
-        this.loginCode = data.code;
-        this.authService.loginWithMS(this.loginCode).subscribe((data) => this.response = data,
-          (err) => {
-
-
-            this.controller.loadCtrl.dismiss();
-            this.controller.presentAlert(err.error.error.message)
-          },
-          () => {
-            this.controller.loadCtrl.dismiss();
-            window.localStorage.setItem("auth", JSON.stringify(this.response))
-            this.authService.getUserProfile();
-          });;
-      }
-    })
+    
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],

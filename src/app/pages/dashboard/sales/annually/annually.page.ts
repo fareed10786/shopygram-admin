@@ -83,7 +83,7 @@ export class AnnuallyPage implements OnInit {
     }
   }
   public goToYearSale(index:number) {
-    this.router.navigate(['/dashboard/annually'],{queryParams:{year:index}});
+    this.router.navigate(['/sg-admin/dashboard/annually'],{queryParams:{year:index}});
   }
 }
 

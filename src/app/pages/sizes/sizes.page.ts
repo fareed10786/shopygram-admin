@@ -88,9 +88,9 @@ export class SizesPage implements OnInit {
 
   goToSize(data?: any) {
     if (!data)
-      this.router.navigate(['/sizes/crud']);
+      this.router.navigate(['/sg-admin/sizes/crud']);
     else {
-      this.router.navigate(['/sizes/crud'], { queryParams: { id: data.id } });
+      this.router.navigate(['/sg-admin/sizes/crud'], { queryParams: { id: data.id } });
 
     }
   }

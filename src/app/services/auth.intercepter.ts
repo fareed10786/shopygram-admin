@@ -46,6 +46,6 @@ export class AuthInterceptor implements HttpInterceptor {
 
   public handleAuthError() {
    window.localStorage.clear();
-   window.open("/login","_self");
+   window.open("/sg-admin/login","_self");
   }
 }

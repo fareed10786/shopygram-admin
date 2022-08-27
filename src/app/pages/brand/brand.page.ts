@@ -78,9 +78,9 @@ export class BrandPage implements OnInit {
 
   goToBrand(data?: any) {
     if (!data)
-      this.router.navigate(['/brands/crud']);
+      this.router.navigate(['/sg-admin/brands/crud']);
     else {
-      this.router.navigate(['/brands/crud'], { queryParams: { id: data.id } });
+      this.router.navigate(['/sg-admin/brands/crud'], { queryParams: { id: data.id } });
 
     }
   }
