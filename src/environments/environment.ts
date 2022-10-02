@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiURL:'https://shopygram.techkopra.com/'
+  apiURL:'https://api-dev.myshopygram.com'
 };
 
 /*
