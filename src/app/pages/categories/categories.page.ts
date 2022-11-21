@@ -20,7 +20,7 @@ export class CategoriesPage implements OnInit {
   category:Partial<Category>={};
   dtOptions: DataTables.Settings = {
     pagingType: 'full_numbers',
-    scrollX: true,
+    processing: true,
     pageLength: 50,
   dom: 'frtlp',
     responsive:true,

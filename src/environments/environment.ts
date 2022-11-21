@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiURL:'https://api-dev.myshopygram.com'
+  apiURL:'http://localhost:3000'
 };
 
 /*
