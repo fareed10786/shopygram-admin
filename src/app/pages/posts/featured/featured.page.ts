@@ -59,6 +59,7 @@ export class FeaturedPage implements OnInit {
         this.dtTrigger.next();
       }
       this.posts = results;
+      
     })
   }
   rerender(): void {
