@@ -14,7 +14,7 @@ export class SubAdminPage implements OnInit {
   users:Array<any>=[];
   dtOptions: DataTables.Settings = {
     pagingType: 'full_numbers',
-    scrollX: true,
+    processing: true,
     pageLength: 50,
   dom: 'frtlp',
     responsive:true,

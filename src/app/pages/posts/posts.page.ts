@@ -14,7 +14,7 @@ export class PostsPage implements OnInit {
   posts:Array<any>=[];
   dtOptions: DataTables.Settings = {
     pagingType: 'full_numbers',
-    scrollX: true,
+   processing: true,
     pageLength: 50,
   dom: 'frtlp',
   responsive:true,

@@ -26,19 +26,15 @@
               <option [value]="1">Show Approved Sizes</option>
               <option [value]="3">Show Bundles</option>
             </select>
-            <table [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" datatable class="table w-100 nowrap"
-      
-            >
-            <ng-container       *ngIf="segment!=3">
+            <table [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" datatable class="table w-100 nowrap">
+            <ng-container *ngIf="segment!=3">
               <thead>
                 <tr>
-
-                  <th> Sl. No</th>
+                  <th>Sr. No</th>
                   <th>Name</th>
-                  <th >Updated</th>
+                  <th>Updated</th>
                   <th>Status</th>
-     
-
+                  
                 </tr>
               </thead>
               <tbody>
@@ -66,7 +62,7 @@
                 <thead>
                   <tr>
   
-                    <th> Sl. No</th>
+                    <th> Sr. No</th>
                     <th>Name</th>
                     <th>Status</th>
                     <th>Action</th>
